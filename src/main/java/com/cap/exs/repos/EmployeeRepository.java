@@ -9,6 +9,6 @@ import com.cap.exs.entities.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 
 	
-	public Employee findByUsernameAndPaswordAndRole(String username, String password, String role);
+	public Employee findByLoginDetails(LoginDetails loginDetails);
 	
 }
