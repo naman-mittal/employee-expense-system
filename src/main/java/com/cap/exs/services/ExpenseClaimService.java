@@ -3,12 +3,16 @@ package com.cap.exs.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.repos.EmployeeRepository;
-import com.cap.exs.repos.ExpenseClaim;
+import com.cap.exs.repos.ExpenseClaimRepository;
 
+@Service
 public class ExpenseClaimService {
+	
 	@Autowired
 	ExpenseClaimRepository expenseClaimRepository;
 	
