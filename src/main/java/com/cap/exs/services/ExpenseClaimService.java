@@ -1,21 +1,20 @@
 package com.cap.exs.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.repos.EmployeeRepository;
-import com.cap.exs.repos.ExpenseClaim;
 import com.cap.exs.repos.ExpenseClaimRepository;
 
+@Service
 public class ExpenseClaimService {
-	@Autowired
-	ExpenseClaimRepository expenseClaimRepository;
 	
 	@Autowired
-	EmployeeService employeeService;
+	ExpenseClaimRepository expenseClaimRepository;
 	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		
@@ -23,7 +22,7 @@ public class ExpenseClaimService {
 	}
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		
-		List<ExpenseClaim> expenseClaims = expenseClaimRepository.findAll();
+		List<ExpenseClaim> expenseClaim = expenseClaimRepository.findAll();
 		
 		if(expenseClaim.isEmpty())
 		{
@@ -36,13 +35,7 @@ public class ExpenseClaimService {
 	
 	public ExpenseClaim findExpenseClaimById(int expenseCodeID) {
 		
-		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(empId);
-		if(!expenseClaim.isPresent())
-		{
-			//throw exception
-		}
-		
-		return expenseClaim;
+		return expenseClaimRepository.findById(expenseCodeID);
 	
 	}
 	
@@ -54,13 +47,13 @@ public class ExpenseClaimService {
 	
 	public ExpenseClaim deleteExpenseClaimById(int id) {
 		
-		ExpenseClaim expenseClaim = this.findExpenseClaimById(id);
+		ExpenseClaim expenseClaim = this.findById(id);
 		
 		expenseClaimRepository.delete(expenseClaim);
 		
 	}
 	
-	public List<ExpenseClaim> getAllClaimsByEmployee(Employee employee){
+	public List<ExpenseClaim> getAllClaimsByEmployee(Employee emp){
 		//LOGIC
 		
 		return null;
