@@ -15,7 +15,20 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
+	@Autowired
+	LoginRepository loginRepository;
+	
+	@Autowired
+	LoginService loginService;
+	
 	public Employee addEmployee(Employee employee) {
+		
+		LoginDetails loginDetails = loginRepository.findByUsername(employee.getLoginDetails().getUsername());
+		
+		if(loginDetails!=null)
+		{
+		//	throw new UsernameAlreadyExistException("username " + loginDetails.getUsername() + " already taken!!");
+		}
 		
 		return employeeRepository.save(employee);
 	}
@@ -62,7 +75,11 @@ public class EmployeeService {
 	
 	public Employee getDetailsByAll(String username, String password, String role) {
 		
-		Employee employee = employeeRepository.findByUsernameAndPaswordAndRole(username, password, role);
+		LoginDetails loginDetails = new LoginDetails(username,password,role);
+		
+		LoginDetails foundLoginDetails = loginService.validateUser(loginDetails);
+		
+		Employee employee = employeeRepository.findByLoginDetails(foundLoginDetails);
 		
 		if(employee==null)
 		{
