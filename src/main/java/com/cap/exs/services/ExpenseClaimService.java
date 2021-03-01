@@ -8,11 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.ExpenseClaim;
-import com.cap.exs.repos.EmployeeRepository;
-<<<<<<< HEAD
-import com.cap.exs.repos.ExpenseClaim;
-=======
->>>>>>> 2b6778031f74cedb3e416700ce151d50aaf475b6
 import com.cap.exs.repos.ExpenseClaimRepository;
 
 @Service
@@ -26,30 +21,30 @@ public class ExpenseClaimService {
 	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		
-		return expenseClaimRepository.save(ExpenseClaim);
+		return expenseClaimRepository.save(expenseClaim);
 	}
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		
 		List<ExpenseClaim> expenseClaims = expenseClaimRepository.findAll();
 		
-		if(expenseClaim.isEmpty())
+		if(expenseClaims.isEmpty())
 		{
 			//throw exception
 		}
 		
-		return expenseClaim;
+		return expenseClaims;
 		
 	}
 	
 	public ExpenseClaim findExpenseClaimById(int expenseCodeID) {
 		
-		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(empId);
+		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
 		{
 			//throw exception
 		}
 		
-		return expenseClaim;
+		return expenseClaim.get();
 	
 	}
 	
@@ -65,12 +60,21 @@ public class ExpenseClaimService {
 		
 		expenseClaimRepository.delete(expenseClaim);
 		
+		return expenseClaim;
+		
 	}
 	
 	public List<ExpenseClaim> getAllClaimsByEmployee(Employee employee){
-		//LOGIC
 		
-		return null;
+		Employee foundEmployee = employeeService.findByEmployeeCode(employee.getEmpId());
+		
+		List<ExpenseClaim> expenseClaims = expenseClaimRepository.findByEmployee(foundEmployee);		
+		if(expenseClaims.isEmpty())
+		{
+			//throw exception
+		}
+		
+		return expenseClaims;
 	}
 
 
