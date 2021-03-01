@@ -19,13 +19,13 @@ public class ExpenseClaim {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Expense expense;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Project project;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Employee employee;
 	
 	public ExpenseClaim() {}
