@@ -19,7 +19,22 @@ public class ExpenseClaimService {
 	@Autowired
 	EmployeeService employeeService;
 	
+	@Autowired
+	ProjectService projectSevice;
+	
+	@Autowired
+	ExpenseService expenseService;
+	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
+		
+		Employee employee = employeeService.findByEmployeeCode(expenseClaim.getEmployee().getEmpId());
+		Project project = projectService.findByCode(expenseClaim.getProject().getProjectCode());
+		Expense expense = expenseService.findByCode(expenseClaim.getExpense().getExpenseCode());
+		
+		
+		expenseClaim.setEmployee(employee);
+		expenseClaim.setExpense(expense);
+		expenseClaim.setProject(project);
 		
 		return expenseClaimRepository.save(expenseClaim);
 	}
