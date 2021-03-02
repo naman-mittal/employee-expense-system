@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.ExpenseClaim;
+import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
 import com.cap.exs.repos.ExpenseClaimRepository;
 
 @Service
@@ -44,7 +46,7 @@ public class ExpenseClaimService {
 		
 		if(expenseClaims.isEmpty())
 		{
-			//throw exception
+			throw new ExpenseClaimNotFoundException("no Claims found!!");
 		}
 		
 		return expenseClaims;
@@ -56,7 +58,7 @@ public class ExpenseClaimService {
 		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
 		{
-			//throw exception
+			throw new ExpenseClaimNotFoundException("no Claims found!!");
 		}
 		
 		return expenseClaim.get();
@@ -86,7 +88,7 @@ public class ExpenseClaimService {
 		List<ExpenseClaim> expenseClaims = expenseClaimRepository.findByEmployee(foundEmployee);		
 		if(expenseClaims.isEmpty())
 		{
-			//throw exception
+			throw new ExpenseClaimNotFoundException("no Expense claim  found with username = \" + username ");
 		}
 		
 		return expenseClaims;
