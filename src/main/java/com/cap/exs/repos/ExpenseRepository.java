@@ -6,5 +6,7 @@ import com.cap.exs.entities.Expense;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Integer>{
 	
+	// public Expense findByCode(int code);
+	
 
 }
