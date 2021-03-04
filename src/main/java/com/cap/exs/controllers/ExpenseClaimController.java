@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.ExpenseClaim;
-import com.cap.exs.services.EmployeeService;
 import com.cap.exs.services.ExpenseClaimService;
 
 @RestController
@@ -31,7 +31,7 @@ public class ExpenseClaimController {
 	
 	@PostMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
+	public ExpenseClaim addExpenseClaim(@RequestBody ExpenseClaim expenseClaim) {
 		return expenseClaimService.addExpenseClaim(expenseClaim);
 	}
 	
@@ -43,19 +43,19 @@ public class ExpenseClaimController {
 	
 	@PutMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public ExpenseClaim uppdateExpenseClaim(ExpenseClaim expenseClaim) {
+	public ExpenseClaim updateExpenseClaim(@RequestBody ExpenseClaim expenseClaim) {
 		return expenseClaimService.uppdateExpenseClaim(expenseClaim);
 	}
 	
 	@DeleteMapping("/expenseClaim/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public ExpenseClaim deleteExpenseClaimById(int expenseClaimId) {
+	public ExpenseClaim deleteExpenseClaimById(@PathVariable("id") int expenseClaimId) {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
 	}
 	
 	@GetMapping("/expenseClaim/{Employee}")
 	@ResponseStatus(code = HttpStatus.FOUND)
-	public List<ExpenseClaim> getAllClaimsByEmployee(Employee emp){
+	public List<ExpenseClaim> getAllClaimsByEmployee(@PathVariable("Employee") Employee emp){
 		return expenseClaimService.getAllClaimsByEmployee(emp);
 	}
 
