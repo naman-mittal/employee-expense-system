@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.cap.exs.entities.Employee;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+public interface IEmployeeRepository extends JpaRepository<Employee, Integer>{
 
 	
 	public Employee findByLoginDetails(LoginDetails loginDetails);

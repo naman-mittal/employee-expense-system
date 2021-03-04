@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
-import com.cap.exs.repos.EmployeeRepository;
+import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.service_interfaces.IEmployeeService;
 
 @Service
 public class EmployeeService implements IEmployeeService {
 
 	@Autowired
-	EmployeeRepository employeeRepository;
+	IEmployeeRepository employeeRepository;
 	
 	@Autowired
 	LoginRepository loginRepository;
