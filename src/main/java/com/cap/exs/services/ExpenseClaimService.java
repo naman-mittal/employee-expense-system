@@ -58,7 +58,7 @@ public class ExpenseClaimService {
 		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
 		{
-			throw new ExpenseClaimNotFoundException("no Claims found!!");
+			throw new ExpenseClaimNotFoundException("No Claims found with expenseCode ID " + expenseCodeID);
 		}
 		
 		return expenseClaim.get();
