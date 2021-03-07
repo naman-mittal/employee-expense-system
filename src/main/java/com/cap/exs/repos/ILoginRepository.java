@@ -1,20 +1,16 @@
-package com.cap.employeeexpensesystem.repos;
+package com.cap.exs.repos;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cap.employeeexpensesystem.entities.LoginDetails;
 
-@Repository
-public interface ILoginRepository{
-	
-	
-	
-	public LoginDetails addDetails(LoginDetails details);
-	
-	public int deleteDetailsById(int id); 
+import com.cap.exs.entities.LoginDetails;
 
-	public LoginDetails validateUser(LoginDetails details);
-	
-	public LoginDetails logout(LoginDetails details);
-	
+
+public interface ILoginRepository extends JpaRepository<LoginDetails,Integer>{
+
 }
+	
+	
+	
+
+	
