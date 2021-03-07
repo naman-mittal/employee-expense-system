@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Employee {
@@ -17,9 +21,17 @@ public class Employee {
 	private String empPAN;
 	private String empDesignation;
 	private String empDomain;
+	
+	@DateTimeFormat
 	private String empDOJ;
+	
+	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of birth.")
 	private String empDOB;
+	
+	@Min(10000)
 	private String empSalary;
+	
+	@Pattern(regexp = "[A-Za-z0-9]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}", message = "Invalid email address.")
 	private String empEmailId;
 	
 	@OneToOne(cascade = CascadeType.ALL)

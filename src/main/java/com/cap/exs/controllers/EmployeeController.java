@@ -2,6 +2,8 @@ package com.cap.exs.controllers;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,14 +41,14 @@ public class EmployeeController {
 	
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Employee findByEmployeeCode(@PathVariable("id") int empId) {
+	public Employee findByEmployeeCode(@PathVariable("id") @Min(1) int empId) {
 		
 		return employeeService.findByEmployeeCode(empId);		
 	}
 	
 	@DeleteMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteEmpById(int empId) {
+	public void deleteEmpById(@PathVariable("id") @Min(1) int empId) {
 		
 		employeeService.deleteEmpById(empId);
 	}
