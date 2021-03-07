@@ -22,7 +22,7 @@ public class Employee {
 	private String empDesignation;
 	private String empDomain;
 	
-	@DateTimeFormat
+	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of joining.")
 	private String empDOJ;
 	
 	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of birth.")
