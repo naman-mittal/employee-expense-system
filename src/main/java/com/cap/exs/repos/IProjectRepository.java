@@ -13,13 +13,13 @@ public interface IProjectRepository {
 	
 	public Project addProject(Project project);
 	
-	public List<Project> getAllProjectCode(int Id);
+//	public List<Project> getAllProjectCode(int Id);
 	
 	public Project updateProject(Project project);
 	
-	public void deleteProjectById(int id);
+	public Project deleteProjectById(int id);
 	
-	public void deleteAllProject();
+//	public void deleteAllProject();
 	
 	public List<Integer> getAllProjectCodes();
 	
