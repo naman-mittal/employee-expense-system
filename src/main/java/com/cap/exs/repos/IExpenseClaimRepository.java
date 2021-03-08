@@ -8,7 +8,7 @@ import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.ExpenseClaim;
 
 
-public interface ExpenseClaimRepository extends JpaRepository<ExpenseClaim, Integer> {
+public interface IExpenseClaimRepository extends JpaRepository<ExpenseClaim, Integer> {
 	
 	public List<ExpenseClaim> findByEmployee(Employee employee);
 
