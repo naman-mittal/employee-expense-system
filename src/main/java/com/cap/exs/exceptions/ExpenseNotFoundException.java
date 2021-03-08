@@ -4,14 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class EmployeeNotFoundException extends RuntimeException {
-
-	public EmployeeNotFoundException() {
+public class ExpenseNotFoundException  extends RuntimeException{
+	
+	public ExpenseNotFoundException() {
 		super();
 	}
 
-	public EmployeeNotFoundException(String message) {
+	public ExpenseNotFoundException(String message) {
 		super(message);
 	}
-		
+
 }
