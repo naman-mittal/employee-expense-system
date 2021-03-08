@@ -1,4 +1,4 @@
-package com.cap.exs.controller;
+package com.cap.exs.controllers;
 
 public class LoginDetailsController {
 
