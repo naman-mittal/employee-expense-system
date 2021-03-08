@@ -7,16 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
+import com.cap.exs.entities.Project;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
-import com.cap.exs.repos.ExpenseClaimRepository;
+import com.cap.exs.repos.IExpenseClaimRepository;
+import com.cap.exs.service_interfaces.IExpenseClaimService;
 
 @Service
-public class ExpenseClaimService {
+public class ExpenseClaimService implements IExpenseClaimService {
 	
 	@Autowired
-	ExpenseClaimRepository expenseClaimRepository;
+	IExpenseClaimRepository expenseClaimRepository;
 	
 	@Autowired
 	EmployeeService employeeService;
@@ -30,7 +33,7 @@ public class ExpenseClaimService {
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		
 		Employee employee = employeeService.findByEmployeeCode(expenseClaim.getEmployee().getEmpId());
-		Project project = projectService.findByCode(expenseClaim.getProject().getProjectCode());
+		Project project = projectSevice.findByCode(expenseClaim.getProject().getProjectCode());
 		Expense expense = expenseService.findByCode(expenseClaim.getExpense().getExpenseCode());
 		
 		
@@ -53,7 +56,7 @@ public class ExpenseClaimService {
 		
 	}
 	
-	public ExpenseClaim findExpenseClaimById(int expenseCodeID) {
+	public ExpenseClaim fetchExpenseClaimById(int expenseCodeID) {
 		
 		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
@@ -73,7 +76,7 @@ public class ExpenseClaimService {
 	
 	public ExpenseClaim deleteExpenseClaimById(int id) {
 		
-		ExpenseClaim expenseClaim = this.findExpenseClaimById(id);
+		ExpenseClaim expenseClaim = this.fetchExpenseClaimById(id);
 		
 		expenseClaimRepository.delete(expenseClaim);
 		
