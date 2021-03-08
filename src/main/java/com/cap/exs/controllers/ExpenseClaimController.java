@@ -2,6 +2,8 @@ package com.cap.exs.controllers;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,7 +39,7 @@ public class ExpenseClaimController {
 	
 	@GetMapping("/expenseClaim/{id}")
 	@ResponseStatus(code = HttpStatus.FOUND)
-	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") int expenseClaimId){
+	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId){
 		return expenseClaimService.fetchExpenseClaimById(expenseClaimId);
 	}
 	
@@ -49,7 +51,7 @@ public class ExpenseClaimController {
 	
 	@DeleteMapping("/expenseClaim/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public ExpenseClaim deleteExpenseClaimById(@PathVariable("id") int expenseClaimId) {
+	public ExpenseClaim deleteExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId) {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
 	}
 	

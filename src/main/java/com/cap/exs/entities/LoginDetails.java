@@ -1,4 +1,4 @@
-package com.cap.employeeexpensesystem.entities;
+package com.cap.exs.entities;
 
 import javax.persistence.*;
 

@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class ExpenseClaim {
 	
@@ -16,7 +20,13 @@ public class ExpenseClaim {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int expenseCodeId;
 	private double expenseAmount;
+	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
+	
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)

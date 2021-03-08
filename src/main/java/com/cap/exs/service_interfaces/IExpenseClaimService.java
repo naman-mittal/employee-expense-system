@@ -13,7 +13,7 @@ public interface IExpenseClaimService {
 	
 	public ExpenseClaim fetchExpenseClaimById(int expenseCodeID);
 	
-	public ExpenseClaim uppdateExpenseClaim(ExpenseClaim expenseClaim);
+	public ExpenseClaim updateExpenseClaim(ExpenseClaim expenseClaim);
 	
 	public ExpenseClaim deleteExpenseClaimById(int id);
 	
