@@ -3,9 +3,8 @@ package com.cap.exs.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.ConstraintViolationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
@@ -75,7 +74,7 @@ public class EmployeeService implements IEmployeeService {
 		{
 		employeeRepository.delete(employee);
 		}
-		catch(ConstraintViolationException e)
+		catch(DataIntegrityViolationException e)
 		{
 			throw new ExpenseClaimAssociatedException("expense claim exist for employee = " + employee);
 		}
