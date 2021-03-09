@@ -38,16 +38,16 @@ public class LoginService implements ILoginService{
 	
 	
 	
-//public void deleteDetailsById(int empId) {
+public void deleteDetailsById(int empId) {
 //	LoginDetails details = this.findByEmployeeCode(empId);
 //	
 //	employeeRepository.delete(details);
 //	
-//}
+}
 
 
 public LoginDetails validateUser(LoginDetails details) {
-	LoginDetails details = this.findByEmployeeCode(empId);
+//	LoginDetails details = this.findByEmployeeCode(empId);
 	
 	return null;
 }
