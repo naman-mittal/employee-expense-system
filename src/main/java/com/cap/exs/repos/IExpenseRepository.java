@@ -10,7 +10,7 @@ import com.cap.exs.entities.Expense;
 public interface IExpenseRepository extends JpaRepository<Expense, Integer>{
 	
 	// public Expense findByCode(int code);
-	@Query("SELECT e expenseCode FROM Expense e")
+	@Query("SELECT e.expenseCode FROM Expense e")
 	public List<Integer> getAllExpenseCodes();
 	
 
