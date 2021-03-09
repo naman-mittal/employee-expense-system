@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
+import com.cap.exs.repos.ILoginRepository;
 import com.cap.exs.service_interfaces.IEmployeeService;
 
 @Service
@@ -19,18 +21,18 @@ public class EmployeeService implements IEmployeeService {
 	IEmployeeRepository employeeRepository;
 	
 	@Autowired
-	LoginRepository loginRepository;
+	ILoginRepository loginRepository;
 	
 	@Autowired
 	LoginService loginService;
 	
 	public Employee addEmployee(Employee employee) {
 		
-		LoginDetails loginDetails = loginRepository.findByUsername(employee.getLoginDetails().getUsername());
+		LoginDetails loginDetails = loginRepository.findByUserName(employee.getLoginDetails().getUserName());
 		
 		if(loginDetails!=null)
 		{
-			throw new UsernameAlreadyExistException("username " + loginDetails.getUsername() + " already exist!!");
+			throw new UsernameAlreadyExistException("username " + loginDetails.getUserName() + " already exist!!");
 		}
 		
 		return employeeRepository.save(employee);
