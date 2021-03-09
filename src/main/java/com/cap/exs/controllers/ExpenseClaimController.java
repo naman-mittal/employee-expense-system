@@ -25,8 +25,8 @@ public class ExpenseClaimController {
 	@Autowired
 	ExpenseClaimService expenseClaimService;
 	
-	@GetMapping("/expensesClaim")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@GetMapping("/expenseClaim")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		return expenseClaimService.getAllExpenseClaim();
 	}
@@ -38,7 +38,7 @@ public class ExpenseClaimController {
 	}
 	
 	@GetMapping("/expenseClaim/{id}")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@ResponseStatus(code = HttpStatus.OK)
 	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId){
 		return expenseClaimService.fetchExpenseClaimById(expenseClaimId);
 	}
@@ -55,9 +55,9 @@ public class ExpenseClaimController {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
 	}
 	
-	@GetMapping("/expenseClaim/{Employee}")
-	@ResponseStatus(code = HttpStatus.FOUND)
-	public List<ExpenseClaim> getAllClaimsByEmployee(@PathVariable("Employee") Employee emp){
+	@GetMapping("/expenseClaims/employee")
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ExpenseClaim> getAllClaimsByEmployee(Employee emp){
 		return expenseClaimService.getAllClaimsByEmployee(emp);
 	}
 
