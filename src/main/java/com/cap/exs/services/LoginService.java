@@ -33,24 +33,24 @@ public class LoginService implements ILoginService{
 		throw new UsernameAlreadyExistException("username " + loginDetails.getUserName() + " already exist!!");
 	}
 	
-	return employeeRepository.save(details);
+	return loginRepository.save(details);
 	}	
 	
 	
 	
-public void deleteDetailsById(int empId) {
-	LoginDetails details = this.findByEmployeeCode(empId);
-	
-	employeeRepository.delete(details);
-	
-}
-
-
-//public LoginDetails validateUser(LoginDetails details) {
+//public void deleteDetailsById(int empId) {
 //	LoginDetails details = this.findByEmployeeCode(empId);
 //	
-//	employeeRepository.
+//	employeeRepository.delete(details);
+//	
 //}
+
+
+public LoginDetails validateUser(LoginDetails details) {
+	LoginDetails details = this.findByEmployeeCode(empId);
+	
+	return null;
+}
 
 
 //public LoginDetails logout(LoginDetails details) {
