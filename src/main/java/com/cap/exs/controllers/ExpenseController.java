@@ -22,8 +22,8 @@ public class ExpenseController {
 	@Autowired
 	private ExpenseService expenseService;
 	
-	@GetMapping("/expensesCodes")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@GetMapping("/expenses/expenseCode")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<Integer> getAllExpenseCode()
 	{
 		return expenseService.getAllExpenseCode();
@@ -37,14 +37,14 @@ public class ExpenseController {
 	}
 	
 	@GetMapping("/expenses")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<Expense> getAllExpenses()
 	{
 		return expenseService.getAllExpenses();
 	}
 	
 	@GetMapping("/expenses/{id}")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@ResponseStatus(code = HttpStatus.OK)
 	public Expense getExpenseByCode(@PathVariable("id") int expId)
 	{
 		return expenseService.getExpenseByCode(expId);

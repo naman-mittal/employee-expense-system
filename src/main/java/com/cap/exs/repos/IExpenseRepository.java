@@ -13,5 +13,8 @@ public interface IExpenseRepository extends JpaRepository<Expense, Integer>{
 	@Query("SELECT e.expenseCode FROM Expense e")
 	public List<Integer> getAllExpenseCodes();
 	
+	Expense findByExpenseType(String expenseType);
+	
+	
 
 }
