@@ -32,6 +32,13 @@ public class ExpenseService implements IExpenseService {
 		{
 			if(expense==null)
 			throw new NullExpenseFoundException("expense can't be null");
+			
+			Expense foundExpense = expenseRepository.findByExpenseType(expense.getExpenseType());
+			if(foundExpense != null)
+			{
+				// throw ExpenseAlreadyExist
+			}
+					
 			return expenseRepository.save(expense);
 		}
 		
