@@ -5,8 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Expense {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int expenseCode;
 	private String expenseType;
 	private String expenseDescription;

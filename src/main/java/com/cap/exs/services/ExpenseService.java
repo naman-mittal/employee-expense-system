@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Expense;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
+import com.cap.exs.exceptions.NullExpenseFoundException;
 import com.cap.exs.repos.IExpenseRepository;
 import com.cap.exs.service_interfaces.IExpenseService;
 
@@ -29,6 +30,8 @@ public class ExpenseService implements IExpenseService {
 		
 		public Expense addExpense(Expense expense)
 		{
+			if(expense==null)
+			throw new NullExpenseFoundException("expense can't be null");
 			return expenseRepository.save(expense);
 		}
 		
