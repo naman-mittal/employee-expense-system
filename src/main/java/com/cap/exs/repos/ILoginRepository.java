@@ -7,11 +7,7 @@ import com.cap.exs.entities.LoginDetails;
 
 
 public interface ILoginRepository extends JpaRepository<LoginDetails,Integer>{
+
 	LoginDetails findByUserName(String userName);
 
 }
-	
-	
-	
-
-	
