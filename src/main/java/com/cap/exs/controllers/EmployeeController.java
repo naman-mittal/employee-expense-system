@@ -62,7 +62,7 @@ public class EmployeeController {
 	
 	@GetMapping("/employee")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Employee getDetailsByAll(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password, @RequestParam(name = "role") String role) {
+	public Employee getDetailsByAll(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password, @RequestParam(name = "role") String role) {
 		
 		return employeeService.getDetailsByAll(username, password, role);
 	}
