@@ -30,7 +30,7 @@ public class ProjectController {
 	}
 	
 	
-	@PostMapping("/projects")
+	@PostMapping("/project")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Project addProject(@RequestBody Project project) {
 		return projectService.addProject(project);
@@ -39,14 +39,14 @@ public class ProjectController {
 	
 //	public List<Project> getAllProjectCode(int Id){}
 	
-	@PutMapping("/projects")
+	@PutMapping("/project")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Project updateProject(@RequestBody Project project) {
 		return projectService.updateProject(project);
 	}
 	
 	
-	@DeleteMapping("/projects/{id}")
+	@DeleteMapping("/project/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Project deleteProjectById(@PathVariable("id") int id) {
 		return projectService.deleteProjectById(id);
@@ -62,7 +62,7 @@ public class ProjectController {
 	}
 	
 	
-	@GetMapping("/projects/{id}")
+	@GetMapping("/project/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Project findByCode(@PathVariable("id") int projectCode) {
 		return projectService.findByCode(projectCode);	

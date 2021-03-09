@@ -46,6 +46,9 @@ public class ProjectService implements IProjectService{
 	
 	public Project deleteProjectById(int id) {
 		Project project = projectRepository.findById(id).get();
+		if(project == null) {
+			throw new ProjectNotFoundException("No such project exists...");
+		}
 		projectRepository.delete(project);
 		return project;	
 	}
