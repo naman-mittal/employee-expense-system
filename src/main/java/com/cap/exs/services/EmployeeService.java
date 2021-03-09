@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
@@ -68,14 +70,20 @@ public class EmployeeService implements IEmployeeService {
 		
 		Employee employee = this.findByEmployeeCode(empId);
 		
+		try
+		{
 		employeeRepository.delete(employee);
+		}
+		catch(DataIntegrityViolationException e)
+		{
+			throw new ExpenseClaimAssociatedException("expense claim exist for employee = " + employee);
+		}
 		
 	}
 	
 	public Employee updateEmployee(Employee employee) {
 		
-		//update logic
-		return null;
+		return employeeRepository.save(employee);
 	}
 	
 	public Employee getDetailsByAll(String username, String password, String role) {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Expense;
+import com.cap.exs.exceptions.ExpenseAlreadyExistException;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.exceptions.NullExpenseFoundException;
 import com.cap.exs.repos.IExpenseRepository;
@@ -30,13 +31,13 @@ public class ExpenseService implements IExpenseService {
 		
 		public Expense addExpense(Expense expense)
 		{
-			if(expense==null)
+			if(expense.getExpenseType()==null)
 			throw new NullExpenseFoundException("expense can't be null");
 			
 			Expense foundExpense = expenseRepository.findByExpenseType(expense.getExpenseType());
 			if(foundExpense != null)
 			{
-				// throw ExpenseAlreadyExist
+				throw new ExpenseAlreadyExistException("Expense Already Exist!!");
 			}
 					
 			return expenseRepository.save(expense);

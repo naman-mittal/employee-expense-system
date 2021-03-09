@@ -22,14 +22,14 @@ public class ExpenseController {
 	@Autowired
 	private ExpenseService expenseService;
 	
-	@GetMapping("/expenses/expenseCode")
+	@GetMapping("/expense/expenseCode")
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<Integer> getAllExpenseCode()
 	{
 		return expenseService.getAllExpenseCode();
 	}
 	
-	@PostMapping("/expenses")
+	@PostMapping("/expense")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Expense addExpense(@RequestBody Expense expense)
 	{
@@ -43,25 +43,32 @@ public class ExpenseController {
 		return expenseService.getAllExpenses();
 	}
 	
-	@GetMapping("/expenses/{id}")
+	@GetMapping("/expense/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Expense getExpenseByCode(@PathVariable("id") int expId)
 	{
 		return expenseService.getExpenseByCode(expId);
 	}
 	
-	@PutMapping("/expenses")
+	@PutMapping("/expense")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Expense updateExpense(@RequestBody Expense expense)
 	{
 		return expenseService.updateExpense(expense);
 	}
 	
-	@DeleteMapping("/expenses/{id}")
+	@DeleteMapping("/expense/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Expense deleteExpenseByCode(@PathVariable("id") int expCode)
 	{
 		return expenseService.deleteExpenseByCode(expCode);
+	}
+	
+	@DeleteMapping("/expenses")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteAllExpenses()
+	{
+		expenseService.deleteAllExpenses();
 	}
 	
 	
