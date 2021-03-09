@@ -3,12 +3,15 @@ package com.cap.exs.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
@@ -68,7 +71,14 @@ public class EmployeeService implements IEmployeeService {
 		
 		Employee employee = this.findByEmployeeCode(empId);
 		
+		try
+		{
 		employeeRepository.delete(employee);
+		}
+		catch(ConstraintViolationException e)
+		{
+			throw new ExpenseClaimAssociatedException("expense claim exist for employee = " + employee);
+		}
 		
 	}
 	
