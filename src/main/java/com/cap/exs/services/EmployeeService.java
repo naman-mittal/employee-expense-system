@@ -74,8 +74,7 @@ public class EmployeeService implements IEmployeeService {
 	
 	public Employee updateEmployee(Employee employee) {
 		
-		//update logic
-		return null;
+		return employeeRepository.save(employee);
 	}
 	
 	public Employee getDetailsByAll(String username, String password, String role) {
