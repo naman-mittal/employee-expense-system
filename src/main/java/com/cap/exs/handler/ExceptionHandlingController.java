@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 
@@ -39,6 +40,14 @@ public class ExceptionHandlingController {
 	{
 		
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+		
+	}
+	
+	@ExceptionHandler(ExpenseClaimAssociatedException.class)
+	ResponseEntity<String> ExpenseClaimAssociatedException(ExpenseClaimAssociatedException e)
+	{
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
 		
 	}
 }
