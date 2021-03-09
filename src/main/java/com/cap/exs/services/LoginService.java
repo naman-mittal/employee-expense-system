@@ -26,7 +26,7 @@ public class LoginService implements ILoginService{
 	
 	//method to add details of the employee
 	public LoginDetails addDetails(LoginDetails details) {
-	LoginDetails loginDetails = loginRepository.findByUsername(details.getUserName());
+	LoginDetails loginDetails = loginRepository.findByUserName(details.getUserName());
 	
 	if(loginDetails!=null)
 	{
