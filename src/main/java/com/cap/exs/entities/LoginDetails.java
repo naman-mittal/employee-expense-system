@@ -10,7 +10,7 @@ public class LoginDetails {
 	private int id;		 //employee id
 	private String userName;		//employee username
 	private String password;		//employee password
-	String role;			//employee role
+	private String role;			//employee role
 
 	//default constructor
 	public LoginDetails() {
@@ -46,11 +46,22 @@ public class LoginDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", userName=" + userName + ", password=" + password + ", role=" + role + "]";
+		return "LoginDetails [id=" + id + ", userName=" + userName + ", password=" + password + ", role=" + role + "]";
 	}
+
+
 	
 	
 

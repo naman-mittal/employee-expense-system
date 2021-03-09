@@ -47,9 +47,9 @@ public void deleteDetailsById(int empId) {
 
 
 public LoginDetails validateUser(LoginDetails details) {
-//	LoginDetails details = this.findByEmployeeCode(empId);
+	LoginDetails foundDetails = loginRepository.validateUser(details.getUserName(), details.getPassword(), details.getRole());
 	
-	return null;
+	return foundDetails;
 }
 
 
