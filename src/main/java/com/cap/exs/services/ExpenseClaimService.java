@@ -68,7 +68,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	}
 	
-	public ExpenseClaim uppdateExpenseClaim(ExpenseClaim expenseClaim) {
+	public ExpenseClaim updateExpenseClaim(ExpenseClaim expenseClaim) {
 		
 		return null;
 		

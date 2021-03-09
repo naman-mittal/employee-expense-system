@@ -46,7 +46,7 @@ public class ExpenseClaimController {
 	@PutMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public ExpenseClaim updateExpenseClaim(@RequestBody ExpenseClaim expenseClaim) {
-		return expenseClaimService.uppdateExpenseClaim(expenseClaim);
+		return expenseClaimService.updateExpenseClaim(expenseClaim);
 	}
 	
 	@DeleteMapping("/expenseClaim/{id}")

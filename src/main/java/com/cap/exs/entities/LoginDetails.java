@@ -1,7 +1,7 @@
 package com.cap.exs.entities;
 
 import javax.persistence.*;
-
+@Entity
 public class LoginDetails {
 	
 	@SequenceGenerator(name="employee_sequence",allocationSize = 1)
