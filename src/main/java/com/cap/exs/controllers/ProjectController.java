@@ -23,14 +23,14 @@ public class ProjectController {
 	ProjectService projectService;
 	
 	
-	@PostMapping("/project")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@GetMapping("/projects")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<Project> getAllProject(){
 		return projectService.getAllProject();
 	}
 	
 	
-	@GetMapping("/project")
+	@PostMapping("/projects")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Project addProject(@RequestBody Project project) {
 		return projectService.addProject(project);
@@ -39,14 +39,14 @@ public class ProjectController {
 	
 //	public List<Project> getAllProjectCode(int Id){}
 	
-	@PutMapping("/project")
+	@PutMapping("/projects")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Project updateProject(@RequestBody Project project) {
 		return projectService.updateProject(project);
 	}
 	
 	
-	@DeleteMapping("/project/{id}")
+	@DeleteMapping("/projects/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Project deleteProjectById(@PathVariable("id") int id) {
 		return projectService.deleteProjectById(id);
@@ -55,14 +55,14 @@ public class ProjectController {
 	
 //	public void deleteAllProject(){}
 	
-	@GetMapping("/project/projectCode")
-	@ResponseStatus(code = HttpStatus.FOUND)
+	@GetMapping("/projects/projectCode")
+	@ResponseStatus(code = HttpStatus.OK)
 	public List<Integer> getAllProjectCodes(){
 		return projectService.getAllProjectCodes();		
 	}
 	
 	
-	@GetMapping("/project/{id}")
+	@GetMapping("/projects/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Project findByCode(@PathVariable("id") int projectCode) {
 		return projectService.findByCode(projectCode);	
