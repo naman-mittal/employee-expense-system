@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
+import com.cap.exs.exceptions.InvalidUserException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
@@ -57,6 +58,11 @@ public void deleteDetailsById(int Id) {
 
 public LoginDetails validateUser(LoginDetails details) {
 	LoginDetails foundDetails = loginRepository.validateUser(details.getUserName(), details.getPassword(), details.getRole());
+	
+	if(foundDetails == null)
+	{
+		throw new InvalidUserException("loginDetails does not exist");
+	}
 	
 	return foundDetails;
 }
