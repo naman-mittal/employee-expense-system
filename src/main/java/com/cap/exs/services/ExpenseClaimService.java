@@ -1,20 +1,21 @@
 package com.cap.exs.services;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
-import com.cap.exs.exceptions.EmployeeNotFoundException;
+
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
-import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IExpenseClaimRepository;
 import com.cap.exs.service_interfaces.IExpenseClaimService;
 
@@ -32,6 +33,8 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	@Autowired
 	ExpenseService expenseService;
+	
+	Logger logger = LoggerFactory.getLogger(LoggingController.class);
 	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		// finding employee object from database
@@ -55,7 +58,8 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		
 		if(expenseClaims.isEmpty())
 		{
-			throw new ExpenseClaimNotFoundException("no Claims found!!");
+			logger.error("No Claims Records Found!!", ExpenseClaimNotFoundException.class);
+			throw new ExpenseClaimNotFoundException("No Claims found!!");
 		}
 		
 		return expenseClaims;
@@ -67,6 +71,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		Optional<ExpenseClaim> expenseClaim = expenseClaimRepository.findById(expenseCodeID);
 		if(!expenseClaim.isPresent())
 		{
+			logger.error("No Claims Records Found With Provided Expense ID !!", ExpenseClaimNotFoundException.class);
 			throw new ExpenseClaimNotFoundException("No Claims found with expenseCode ID " + expenseCodeID);
 		}
 		
@@ -137,6 +142,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		List<ExpenseClaim> claimWithinDates =  expenseClaimRepository.findAllBetweenDates(startDate,endDate);
 		
 		if(claimWithinDates.isEmpty()) {
+			logger.error("No Claims Records Found between Provided Dates!!", ExpenseClaimNotFoundException.class);
 			throw new ExpenseClaimNotFoundException("No Claims found between" + startDate + "and" + endDate );
 		}
 		
