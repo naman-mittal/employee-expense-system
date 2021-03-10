@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,6 +20,8 @@ public class ExpenseClaim {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int expenseCodeId;
+	
+	@NotNull
 	private double expenseAmount;
 	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

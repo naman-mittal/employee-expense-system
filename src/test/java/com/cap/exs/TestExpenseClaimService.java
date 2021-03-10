@@ -71,7 +71,7 @@ public class TestExpenseClaimService {
 //	@Test
 	public void testGetAllExpenseClaim() {
 		List<ExpenseClaim> allExpenseClaim = expenseClaimService.getAllExpenseClaim();
-		assertEquals(4, allExpenseClaim.size());	
+		assertEquals(0, allExpenseClaim.size());	
 	}
 	
 //	@Test
