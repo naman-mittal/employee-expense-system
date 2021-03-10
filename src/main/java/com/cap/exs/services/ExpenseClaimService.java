@@ -31,8 +31,10 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	ExpenseService expenseService;
 	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
-		
+		// finding employee object from database
 		Employee employee = employeeService.findByEmployeeCode(expenseClaim.getEmployee().getEmpId());
+		
+		// finding project object from database
 		Project project = projectSevice.findByCode(expenseClaim.getProject().getProjectCode());
 		Expense expense = expenseService.findByCode(expenseClaim.getExpense().getExpenseCode());
 		
@@ -42,6 +44,8 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		expenseClaim.setProject(project);
 		
 		return expenseClaimRepository.save(expenseClaim);
+		
+		expenseClaimRepository.de
 	}
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		
@@ -97,6 +101,34 @@ public class ExpenseClaimService implements IExpenseClaimService {
 		return expenseClaims;
 	}
 
+	public void deleteAllClaimsByEmployee(Employee employee) {
+		
+		Employee foundEmployee = employeeService.findByEmployeeCode(employee.getEmpId());
+		
+		List<ExpenseClaim> calims =  expenseClaimRepository.findByEmployee(foundEmployee);
+		
+		expenseClaimRepository.deleteAll(calims);
+		
+	}
+	
+	public void deleteAllClaimsByExpense(Expense expense) {
+		
+		Expense foundExpense = expenseService.findByCode(expense.getExpenseCode());
+		
+		List<ExpenseClaim> calims =  expenseClaimRepository.findByExpense(foundExpense);
+		
+		expenseClaimRepository.deleteAll(calims);
+		
+	}
 
+	public void deleteAllClaimsByProject(Project project) {
+	
+	Project foundProject = projectSevice.findByCode(project.getProjectCode());
+	
+	List<ExpenseClaim> calims =  expenseClaimRepository.findByProject(foundProject);
+	
+	expenseClaimRepository.deleteAll(calims);
+	
+}
 	
 }
