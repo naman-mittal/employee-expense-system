@@ -1,5 +1,6 @@
 package com.cap.exs.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -132,12 +133,11 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	}
 	
-	public List<ExpenseClaim> findAllBetweenDates(){
-		List<ExpenseClaim> claimWithinDates = new ArrayList<ExpenseClaim>();
-		claimWithinDates = expenseClaimRepository.findAll();
+	public List<ExpenseClaim> findAllClaimsBetweenDates(LocalDate startDate , LocalDate endDate){
+		List<ExpenseClaim> claimWithinDates =  expenseClaimRepository.findAllBetweenDates(startDate,endDate);
 		
 		if(claimWithinDates.isEmpty()) {
-			throw new ExpenseClaimNotFoundException("No Claims found...");
+			throw new ExpenseClaimNotFoundException("No Claims found between" + startDate + "and" + endDate );
 		}
 		
 		return claimWithinDates;
