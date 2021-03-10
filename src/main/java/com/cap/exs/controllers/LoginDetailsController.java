@@ -1,7 +1,5 @@
 package com.cap.exs.controllers;
 
-import java.util.List;
-
 import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.services.LoginService;
 
@@ -35,6 +32,12 @@ public class LoginDetailsController {
 	public void deleteDetailsById(@PathVariable("id") @Min(1) int empId) {
 		
 		loginService.deleteDetailsById(empId);
+	}
+	
+	@GetMapping("/loginDetail/user")
+	public LoginDetails validateUser(@RequestBody LoginDetails details)
+	{
+		return loginService.validateUser(details);
 	}
 	
 }
