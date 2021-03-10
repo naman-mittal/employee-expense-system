@@ -1,10 +1,11 @@
 package com.cap.exs.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
@@ -42,7 +43,14 @@ public void deleteDetailsById(int Id) {
 
 	LoginDetails details = loginRepository.findById(Id);
 	
+	try
+	{
 	loginRepository.delete(details);
+	}
+	catch(DataIntegrityViolationException e)
+	{
+		throw new EmployeeAssociatedException("employee exist with loginDetails = " + details);
+	}
 	
 }
 

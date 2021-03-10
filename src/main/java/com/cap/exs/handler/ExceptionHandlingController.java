@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
@@ -50,4 +51,13 @@ public class ExceptionHandlingController {
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	@ExceptionHandler(EmployeeAssociatedException.class)
+	ResponseEntity<String> handleEmployeeAssociatedException(EmployeeAssociatedException e)
+	{
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		
+	}
+	
 }
