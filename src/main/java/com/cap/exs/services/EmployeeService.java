@@ -3,10 +3,13 @@ package com.cap.exs.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
@@ -27,12 +30,15 @@ public class EmployeeService implements IEmployeeService {
 	@Autowired
 	LoginService loginService;
 	
+	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	
 	public Employee addEmployee(Employee employee) {
 		
 		LoginDetails loginDetails = loginRepository.findByUserName(employee.getLoginDetails().getUserName());
 		
 		if(loginDetails!=null)
 		{
+			logger.error("username " + loginDetails.getUserName() + " already taken!!", UsernameAlreadyExistException.class);
 			throw new UsernameAlreadyExistException("username " + loginDetails.getUserName() + " already exist!!");
 		}
 		
