@@ -1,5 +1,6 @@
 package com.cap.exs.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
+import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IExpenseClaimRepository;
 import com.cap.exs.service_interfaces.IExpenseClaimService;
 
@@ -128,6 +130,16 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	expenseClaimRepository.deleteAll(calims);
 	
-}
+	}
 	
+	public List<ExpenseClaim> findAllBetweenDates(){
+		List<ExpenseClaim> claimWithinDates = new ArrayList<ExpenseClaim>();
+		claimWithinDates = expenseClaimRepository.findAll();
+		
+		if(claimWithinDates.isEmpty()) {
+			throw new ExpenseClaimNotFoundException("No Claims found...");
+		}
+		
+		return claimWithinDates;
+	}
 }
