@@ -6,10 +6,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.Expense;
 import com.cap.exs.exceptions.ExpenseAlreadyExistException;
+import com.cap.exs.exceptions.ExpenseAssociatedException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.exceptions.NullExpenseFoundException;
 import com.cap.exs.repos.IExpenseRepository;
@@ -74,9 +78,19 @@ public class ExpenseService implements IExpenseService {
 		
 		public Expense deleteExpenseByCode(int expenseCode)
 		{
-			Expense expense = expenseRepository.findById(expenseCode).get();
-			expenseRepository.delete(expense);
+			Expense expense = expenseRepository.findById(expenseCode).get();	
+			try
+			{
+				expenseRepository.delete(expense);
+			}
+			catch(DataIntegrityViolationException e)
+			{
+				throw new ExpenseAssociatedException("Employee already exist for expense = " + expense);
+			}
+			
 			return expense;
+			
+			
 		}
 		
 		public void deleteAllExpenses()
