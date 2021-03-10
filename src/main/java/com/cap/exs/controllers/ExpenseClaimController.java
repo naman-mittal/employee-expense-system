@@ -1,5 +1,6 @@
 package com.cap.exs.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.constraints.Min;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -62,5 +64,11 @@ public class ExpenseClaimController {
 	public List<ExpenseClaim> getAllClaimsByEmployee(Employee emp){
 		return expenseClaimService.getAllClaimsByEmployee(emp);
 	}
+	
+//	@GetMapping("/expenseClaims")
+//	@ResponseStatus(code = HttpStatus.OK)
+//	public List<ExpenseClaim> findAllClaimsBetweenDates(@RequestParam(name = "startDate") LocalDate startDate ,@RequestParam(name = "endDate") LocalDate endDate){
+//		return expenseClaimService.findAllClaimsBetweenDates(startDate, endDate);
+//	}
 
 }
