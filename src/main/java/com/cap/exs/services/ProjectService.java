@@ -1,17 +1,19 @@
 package com.cap.exs.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.entities.Expense;
+import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Project;
 import com.cap.exs.repos.IProjectRepository;
 import com.cap.exs.service_interfaces.IProjectService;
-import com.cap.exs.exceptions.ExpenseNotFoundException;
+import com.cap.exs.exceptions.ProjectAlreadyExistException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 
 
@@ -21,11 +23,14 @@ public class ProjectService implements IProjectService{
 	@Autowired
 	IProjectRepository projectRepository;
 	
+	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	
+	//change this....DONE
 	public List<Project> getAllProject(){
-		List<Project> projects = new ArrayList<Project>();
-		projects = projectRepository.findAll();
+		List<Project> projects = projectRepository.findAll();
 		
 		if(projects.isEmpty()) {
+			logger.error("No Projects Found", ProjectNotFoundException.class);
 			throw new ProjectNotFoundException("No projects found...");
 		}
 		
@@ -34,6 +39,12 @@ public class ProjectService implements IProjectService{
 	
 	
 	public Project addProject(Project project) {
+		List<Integer> allProjects = this.getAllProjectCodes();
+		if(allProjects.contains((Object)project)) {
+			logger.error("Project with this code already exists", ProjectAlreadyExistException.class);
+			throw new ProjectAlreadyExistException("Project with this code already exists...");
+		}
+		
 		return projectRepository.save(project);
 	}
 	
@@ -43,14 +54,18 @@ public class ProjectService implements IProjectService{
 		return projectRepository.save(project);
 	}
 	
-	
+	//change this....DONE
 	public Project deleteProjectById(int id) {
-		Project project = projectRepository.findById(id).get();
-		if(project == null) {
-			throw new ProjectNotFoundException("No such project exists...");
+//		Project project = projectRepository.findById(id).get();
+		Project project = this.findByCode(id);
+		try {
+			projectRepository.delete(project);
 		}
-		projectRepository.delete(project);
-		return project;	
+		catch(DataIntegrityViolationException  e) {
+			logger.error("No such project found", ProjectNotFoundException.class);
+			throw new ProjectNotFoundException("No such project exist with given Id: " + project);
+		}
+		return project;
 	}
 	
 	
@@ -58,10 +73,10 @@ public class ProjectService implements IProjectService{
 	
 	
 	public List<Integer> getAllProjectCodes(){
-		List<Integer> projectCodes = new ArrayList<Integer>();
-		projectCodes = projectRepository.getAllProjectCodes();
+		List<Integer> projectCodes = projectRepository.getAllProjectCodes();
 		
 		if(projectCodes.isEmpty()) {
+			logger.error("No Project Code Found", ProjectNotFoundException.class);
 			throw new ProjectNotFoundException("No project code found...");
 		}
 		
@@ -73,6 +88,7 @@ public class ProjectService implements IProjectService{
 		Optional<Project> project = projectRepository.findById(projectCode);
 		if(!project.isPresent())
 		{
+			logger.error("No Projects Found", ProjectNotFoundException.class);
 			throw new ProjectNotFoundException("No project found with projectCode: " + projectCode);
 		}
 		return project.get();		
