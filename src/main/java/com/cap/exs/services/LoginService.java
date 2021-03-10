@@ -3,7 +3,7 @@ package com.cap.exs.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.entities.Employee;
+
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
@@ -38,11 +38,12 @@ public class LoginService implements ILoginService{
 	
 	
 	
-public void deleteDetailsById(int empId) {
-//	LoginDetails details = this.findByEmployeeCode(empId);
-//	
-//	employeeRepository.delete(details);
-//	
+public void deleteDetailsById(int Id) {
+
+	LoginDetails details = loginRepository.findById(Id);
+	
+	loginRepository.delete(details);
+	
 }
 
 
@@ -51,7 +52,6 @@ public LoginDetails validateUser(LoginDetails details) {
 	
 	return foundDetails;
 }
-
 
 //public LoginDetails logout(LoginDetails details) {
 //	return details;

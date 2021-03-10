@@ -8,13 +8,13 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cap</groupId>
+	<groupId>com.cap.exs</groupId>
 	<artifactId>employee-expense-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>employee-expense-system</name>
-	<description>Project for cap Training</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

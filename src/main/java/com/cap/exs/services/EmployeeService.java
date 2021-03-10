@@ -18,7 +18,6 @@ import com.cap.exs.service_interfaces.IEmployeeService;
 
 @Service
 public class EmployeeService implements IEmployeeService {
-
 	@Autowired
 	IEmployeeRepository employeeRepository;
 	
