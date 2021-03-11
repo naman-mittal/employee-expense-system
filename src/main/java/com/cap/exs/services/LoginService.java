@@ -26,10 +26,7 @@ public class LoginService implements ILoginService{
 	@Autowired
 	ILoginRepository loginRepository;
 	
-	@Autowired
-	LoginService loginService;
-	
-	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	Logger logger = LoggerFactory.getLogger(LoginService.class);
 	
 	//method to add details of the employee
 	public LoginDetails addDetails(LoginDetails details) {
@@ -37,8 +34,9 @@ public class LoginService implements ILoginService{
 	
 	if(loginDetails!=null)
 	{
-		logger.error("username " + loginDetails.getUserName() + " already taken!!", UsernameAlreadyExistException.class);
-		throw new UsernameAlreadyExistException("username " + loginDetails.getUserName() + " already exist!!");
+		String errorMessage = String.format("username %s already taken!!", details.getUserName());
+		logger.error(errorMessage, UsernameAlreadyExistException.class);
+		throw new UsernameAlreadyExistException(errorMessage);
 	}
 	
 	return loginRepository.save(details);
@@ -55,8 +53,10 @@ public void deleteDetailsById(int Id) {
 	loginRepository.delete(details);
 	}
 	catch(DataIntegrityViolationException e)
-	{	logger.error("expense claim exist for employee = " + details,ExpenseClaimAssociatedException.class);
-		throw new EmployeeAssociatedException("employee exist with loginDetails = " + details);
+	{	
+		String errorMessage = String.format("employee exist with loginDetails = %s", details.toString());
+		logger.error(errorMessage,EmployeeAssociatedException.class);
+		throw new EmployeeAssociatedException(errorMessage);
 	}
 	
 }
@@ -67,8 +67,9 @@ public LoginDetails validateUser(LoginDetails details) {
 	
 	if(foundDetails == null)
 	{	
-		logger.error("no employee found with details = " + foundDetails,EmployeeNotFoundException.class);
-		throw new InvalidUserException("loginDetails does not exist");
+		String errorMessage = "loginDetails does not exist";
+		logger.error(errorMessage,InvalidUserException.class);
+		throw new InvalidUserException(errorMessage);
 	}
 	
 	return foundDetails;

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.ILoginRepository;
 import com.cap.exs.services.LoginService;
@@ -25,7 +26,7 @@ public class TestLoginService {
 	@Autowired
 	LoginService loginService;
 	
-	@MockBean
+	@Autowired
 	ILoginRepository loginRepository;
 	
 	
@@ -34,10 +35,10 @@ public class TestLoginService {
 	public void testAddDetails() {
 	LoginDetails ld =new LoginDetails();
 	ld.setUserName("aman");
-	ld.setPassword("aman");
+	ld.setPassword("aman1");
 	ld.setRole("analyst");
 
-	when (loginRepository.save(ld)).thenReturn(ld);
+	
 	
 	assertEquals(ld,loginService.addDetails(ld));	
 	}
@@ -46,17 +47,17 @@ public class TestLoginService {
 	public void testAddDetailsWithExistingUsername() {
 		LoginDetails ld = new LoginDetails();
 		ld.setUserName("lalit");
-		when(loginRepository.save(ld)).thenThrow(UsernameAlreadyExistException.class);
 		loginService.addDetails(ld);
 	}
-	@Test
+	
+	@Test(expected = EmployeeAssociatedException.class)
 	public void testDeleteLoginDetailsById()
 	{
 		LoginDetails ld = new LoginDetails();
 		ld.setId(2);
-		when(loginRepository.findById(2)).thenReturn(ld);
+		
 		loginService.deleteDetailsById(2);
 		
-		verify(loginRepository,times(1)).delete(ld);
+		assertEquals(2, loginRepository.count());
 	}
 }
