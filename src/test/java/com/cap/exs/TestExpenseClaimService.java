@@ -1,24 +1,26 @@
 package com.cap.exs;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
-import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.entities.Project;
+import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseNotFoundException;
+import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IExpenseClaimRepository;
 import com.cap.exs.services.ExpenseClaimService;
 
@@ -26,163 +28,125 @@ import com.cap.exs.services.ExpenseClaimService;
 @RunWith(SpringRunner.class)
 public class TestExpenseClaimService {
 	
+	Project project;
+	Expense expense;
+	Employee employee;
+	ExpenseClaim expenseClaim;
+	List<ExpenseClaim> claims;
+	
 	@Autowired
 	ExpenseClaimService expenseClaimService;
 	
-	@MockBean
+	@Autowired
 	IExpenseClaimRepository expenseClaimRepository;
 
-//	@Test
-	public void testAddExpenseClaim() {
-		ExpenseClaim expenseClaim = new ExpenseClaim();
+	@Before
+	public void setup() {
 		
-		expenseClaim.setExpenseAmount(1000.0);
+		project = new Project();
+		project.setProjectCode(6);
 		
-		LocalDate startDate = LocalDate.of(2021, 01, 01);
-		expenseClaim.setStartDate(startDate);
+		expense = new Expense();
+		expense.setExpenseCode(2);
 		
-		LocalDate endDate = LocalDate.of(2021, 05, 20);
-		expenseClaim.setEndDate(endDate);
-		
-//		Expense expense = new Expense(1,"abc","okok");
-//		expenseClaim.setExpense(expense);
-//		
-//		Project project = new Project(1, "Website", LocalDate.of(2021, 01, 01), LocalDate.of(2021, 05, 20));
-//		expenseClaim.setProject(project);
-//		
-//		Employee employee = new Employee("Naman", null, null, null, null, null, null, null, new LoginDetails());
-//		employee.setEmpId(1);
-//		expenseClaim.setEmployee(employee);
-		
-		when(expenseClaimRepository.save(expenseClaim)).thenReturn(expenseClaim);
-		assertEquals(expenseClaim, expenseClaimService.addExpenseClaim(expenseClaim));	
+	    employee = new Employee();
+	    employee.setEmpId(1);
+	    
+	    expenseClaim = new ExpenseClaim(45000,LocalDate.of(2021, 01, 01),LocalDate.of(2021, 05, 20),expense,project,employee);
+	    
+	    ExpenseClaim expenseClaim1 = new ExpenseClaim(40000,LocalDate.of(2021, 01, 01),LocalDate.of(2021, 05, 20),expense,project,employee);
+	    
+	    claims = Arrays.asList(expenseClaim1,expenseClaim);  
 	}
 	
 //	@Test
+	public void testAddExpenseClaim() {
+	
+		assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+	}
+	
+//	@Test(expected=EmployeeNotFoundException.class)
+	public void testAddExpenseClaimWithNonExistingEmployee() {
+		
+		 employee = new Employee();
+		 employee.setEmpId(100);
+		 expenseClaim.setEmployee(employee);
+		
+		 assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+	}
+	
+	@Test(expected=ProjectNotFoundException.class)
+	public void testAddExpenseClaimWithNonExistingProject() {
+		
+		 project = new Project();
+		 project.setProjectCode(100);
+		 expenseClaim.setProject(project);
+		
+		 assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+	}
+	
+	@Test(expected=ExpenseNotFoundException.class)
+	public void testAddExpenseClaimWithNonExistingExpense() {
+		
+		 expense = new Expense();
+		 expense.setExpenseCode(50);
+		 expenseClaim.setExpense(expense);
+		
+		 assertNotNull(expenseClaimService.addExpenseClaim(expenseClaim));
+	}
+
+//	@Test
 	public void testGetAllExpenseClaim() {
-		ExpenseClaim expenseClaim1 = new ExpenseClaim();
-
-		expenseClaim1.setExpenseAmount(1000.0);
 		
-		LocalDate startDate1 = LocalDate.of(2021, 01, 01);
-		expenseClaim1.setStartDate(startDate1);
-		
-		LocalDate endDate1 = LocalDate.of(2021, 05, 20);
-		expenseClaim1.setEndDate(endDate1);
-		
-		ExpenseClaim expenseClaim2 = new ExpenseClaim();
-
-		expenseClaim2.setExpenseAmount(2000.0);
-		
-		LocalDate startDate = LocalDate.of(2021, 05, 01);
-		expenseClaim2.setStartDate(startDate);
-		
-		LocalDate endDate = LocalDate.of(2021, 01, 20);
-		expenseClaim2.setEndDate(endDate);
-		
-		when(expenseClaimRepository.findAll()).thenReturn(Arrays.asList(expenseClaim1,expenseClaim2));
-		assertEquals(2, expenseClaimService.getAllExpenseClaim().size());	
+		assertEquals(4, expenseClaimService.getAllExpenseClaim().size());
 	}
 	
 //	@Test
 	public void testFetchExpenseClaimById() {
-		ExpenseClaim expenseClaim = new ExpenseClaim();
 		
-		expenseClaim.setExpenseAmount(1000.0);
-		
-		LocalDate startDate = LocalDate.of(2021, 01, 01);
-		expenseClaim.setStartDate(startDate);
-		
-		LocalDate endDate = LocalDate.of(2021, 05, 20);
-		expenseClaim.setEndDate(endDate);
-		
-		expenseClaim.setExpenseCodeId(1);
-		
-		when(expenseClaimRepository.findById(1)).thenReturn(Optional.of(expenseClaim));
-		assertEquals(expenseClaim,expenseClaimService.fetchExpenseClaimById(1));
+		assertNotNull(expenseClaimService.fetchExpenseClaimById(1));
 	}
 	
 //	@Test
-//	public void testUpdateExpenseClaim() {
-//		
-//	}
+	public void testUpdateExpenseClaim() {
+	
+		expenseClaim.setEmployee(null);
+		expenseClaim.setExpense(null);
+		expenseClaim.setProject(null);
+		
+		expenseClaim.setExpenseCodeId(1);
+		expenseClaim.setExpenseAmount(33333);
+		
+		assertNotNull(expenseClaimService.updateExpenseClaim(expenseClaim));
+	}
 	
 	
 //	@Test
 	public void testDeleteExpenseClaimById() {
-		ExpenseClaim expenseClaim = new ExpenseClaim();
 		
-		expenseClaim.setExpenseAmount(1000.0);
-		
-		LocalDate startDate = LocalDate.of(2021, 01, 01);
-		expenseClaim.setStartDate(startDate);
-		
-		LocalDate endDate = LocalDate.of(2021, 05, 20);
-		expenseClaim.setEndDate(endDate);
-		
-		expenseClaim.setExpenseCodeId(1);
-		
-		when(expenseClaimRepository.findById(1)).thenReturn(Optional.of(expenseClaim));
-		expenseClaimService.deleteExpenseClaimById(1);
-		
-		verify(expenseClaimRepository,times(1)).delete(expenseClaim);
+		expenseClaimService.deleteExpenseClaimById(10);
+		assertEquals(3, expenseClaimRepository.count());
 	}
 	
 //	@Test
 	public void testGetAllClaimsByEmployee() {
-		ExpenseClaim expenseClaim1 = new ExpenseClaim();
 		
-		expenseClaim1.setExpenseAmount(1000.0);
-		
-		LocalDate startDate1 = LocalDate.of(2021, 01, 01);
-		expenseClaim1.setStartDate(startDate1);
-		
-		LocalDate endDate1 = LocalDate.of(2021, 05, 20);
-		expenseClaim1.setEndDate(endDate1);
-		
-		ExpenseClaim expenseClaim2 = new ExpenseClaim();
-		
-		expenseClaim2.setExpenseAmount(2000.0);
-		
-		LocalDate startDate = LocalDate.of(2021, 05, 01);
-		expenseClaim2.setStartDate(startDate);
-		
-		LocalDate endDate = LocalDate.of(2021, 01, 20);
-		expenseClaim2.setEndDate(endDate);
-		
-		Employee employee = new Employee("Naman", null, null, null, null, null, new LoginDetails());
-		employee.setEmpId(1);
-		expenseClaim1.setEmployee(employee);
-		expenseClaim2.setEmployee(employee);
-		
-		when(expenseClaimRepository.findAll()).thenReturn(Arrays.asList(expenseClaim1,expenseClaim2));
-		assertEquals(2, expenseClaimService.getAllClaimsByEmployee(employee).size());
+		assertNotNull(expenseClaimService.getAllClaimsByEmployee(employee));
 	}
+	
+	@Test(expected=EmployeeNotFoundException.class)
+	public void testGetAllClaimsByEmployeeWithNonExistingEmployee() {
+		
+		employee = new Employee();
+		employee.setEmpId(100);
+		assertNotNull(expenseClaimService.getAllClaimsByEmployee(employee));
+	}
+	
 	
 //	@Test
 	public void testFindAllClaimsBetweenDates() {
-		ExpenseClaim expenseClaim1 = new ExpenseClaim();
-		expenseClaim1.setExpenseCodeId(1);
-		expenseClaim1.setExpenseAmount(1000.0);
 		
-		LocalDate startDate1 = LocalDate.of(2021, 01, 01);
-		expenseClaim1.setStartDate(startDate1);
-		
-		LocalDate endDate1 = LocalDate.of(2021, 05, 20);
-		expenseClaim1.setEndDate(endDate1);
-		
-		ExpenseClaim expenseClaim2 = new ExpenseClaim();
-		expenseClaim2.setExpenseCodeId(2);
-		expenseClaim2.setExpenseAmount(2000.0);
-		
-		LocalDate startDate = LocalDate.of(2021, 05, 01);
-		expenseClaim2.setStartDate(startDate);
-		
-		LocalDate endDate = LocalDate.of(2021, 10, 20);
-		expenseClaim2.setEndDate(endDate);
-		
-		when(expenseClaimRepository.findAllBetweenDates(startDate1, endDate)).thenReturn(Arrays.asList(expenseClaim1,expenseClaim2));
-		assertEquals(2, expenseClaimService.findAllClaimsBetweenDates(startDate1, endDate).size());
+		assertEquals(2, expenseClaimService.findAllClaimsBetweenDates(LocalDate.of(2020, 01, 01), LocalDate.now().plusDays(6)).size());
 	}
 
 }
