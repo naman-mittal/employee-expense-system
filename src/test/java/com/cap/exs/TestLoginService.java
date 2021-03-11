@@ -29,6 +29,7 @@ public class TestLoginService {
 	ILoginRepository loginRepository;
 	
 	
+	
 //	@Test
 	public void testAddDetails() {
 	LoginDetails ld =new LoginDetails();

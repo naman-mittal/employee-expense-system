@@ -4,17 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
 import com.cap.exs.entities.Project;
-
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
 import com.cap.exs.repos.IExpenseClaimRepository;
 import com.cap.exs.service_interfaces.IExpenseClaimService;
@@ -79,9 +79,16 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	}
 	
+	@Transactional
 	public ExpenseClaim updateExpenseClaim(ExpenseClaim expenseClaim) {
 		
-		return expenseClaimRepository.save(expenseClaim);
+		ExpenseClaim foundClaim = this.fetchExpenseClaimById(expenseClaim.getExpenseCodeId());
+		
+		foundClaim.setExpenseAmount(expenseClaim.getExpenseAmount());
+		foundClaim.setStartDate(expenseClaim.getStartDate());
+		foundClaim.setEndDate(expenseClaim.getEndDate());
+		
+		return foundClaim;
 		
 	}
 	

@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
+import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
+import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.exceptions.InvalidUserException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
@@ -35,6 +38,11 @@ public class ExceptionHandlingController {
 //	
 	@ExceptionHandler(EmployeeNotFoundException.class)
 	  ResponseEntity<String> handleEmployeeNotFoundException(EmployeeNotFoundException e) {
+	    return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+	  }
+	
+	@ExceptionHandler(ExpenseClaimNotFoundException.class)
+	  ResponseEntity<String> handleExpenseClaimNotFoundException(ExpenseClaimNotFoundException e) {
 	    return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 	  }
 	
@@ -71,6 +79,26 @@ public class ExceptionHandlingController {
 	{
 		
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+		
+	}
+	
+	
+	
+//	@ExceptionHandler(HttpMessageNotReadableException.class)
+//	ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException e)
+//	{
+//		
+//		return new ResponseEntity<>(e.getMostSpecificCause().getMessage(),HttpStatus.BAD_REQUEST);
+//		
+//	}
+	
+	
+	
+	@ExceptionHandler(InvalidEndDateException.class)
+	ResponseEntity<String> handleInvalidEndDateException(InvalidEndDateException e)
+	{
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
 		
 	}
 	

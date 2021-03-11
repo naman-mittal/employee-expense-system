@@ -3,6 +3,7 @@ package com.cap.exs.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.Expense;
 import com.cap.exs.entities.ExpenseClaim;
+import com.cap.exs.entities.Project;
+import com.cap.exs.request.AddExpenseClaimRequest;
+import com.cap.exs.request.UpdateExpenseClaimRequest;
 import com.cap.exs.services.ExpenseClaimService;
 
 @RestController
@@ -38,8 +43,27 @@ public class ExpenseClaimController {
 	
 	@PostMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ExpenseClaim addExpenseClaim(@RequestBody ExpenseClaim expenseClaim) {
-		return expenseClaimService.addExpenseClaim(expenseClaim);
+	public ExpenseClaim addExpenseClaim(@Valid @RequestBody AddExpenseClaimRequest request) {
+		
+		ExpenseClaim claim = new ExpenseClaim();
+		
+		claim.setExpenseAmount(request.getAmount());
+		claim.setStartDate(request.getStartDate());
+		claim.setEndDate(request.getEndDate());
+		
+		Employee employee = new Employee();
+		employee.setEmpId(request.getEmployeeId());
+		claim.setEmployee(employee);
+		
+		Project project = new Project();
+		project.setProjectCode(request.getProjectId());
+		claim.setProject(project);
+		
+		Expense expense = new Expense();
+		expense.setExpenseCode(request.getExpenseId());
+		claim.setExpense(expense);
+		
+		return expenseClaimService.addExpenseClaim(claim);
 	}
 	
 	@GetMapping("/expenseClaim/{id}")
@@ -50,7 +74,14 @@ public class ExpenseClaimController {
 	
 	@PutMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public ExpenseClaim updateExpenseClaim(@RequestBody ExpenseClaim expenseClaim) {
+	public ExpenseClaim updateExpenseClaim(@Valid @RequestBody UpdateExpenseClaimRequest request) {
+		
+		ExpenseClaim expenseClaim = new ExpenseClaim();
+		expenseClaim.setExpenseCodeId(request.getId());
+		expenseClaim.setStartDate(request.getStartDate());
+		expenseClaim.setEndDate(request.getEndDate());
+		expenseClaim.setExpenseAmount(request.getExpenseAmount());
+		
 		return expenseClaimService.updateExpenseClaim(expenseClaim);
 	}
 	
