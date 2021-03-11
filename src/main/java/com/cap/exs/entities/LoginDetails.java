@@ -7,7 +7,7 @@ public class LoginDetails {
 	@SequenceGenerator(name="employee_sequence",allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "employee_sequence")
 	@Id
-	private int id;		 //employee id
+	private int id;	//employee id
 	private String userName;		//employee username
 	private String password;		//employee password
 	private String role;			//employee role

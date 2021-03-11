@@ -16,6 +16,7 @@ public class AddExpenseClaimRequest {
 	
 	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
 	
 	public AddExpenseClaimRequest() {
@@ -36,8 +37,8 @@ public class AddExpenseClaimRequest {
 	@Positive
 	private int employeeId;
 
-	public AddExpenseClaimRequest(@Positive double amount, @NotNull LocalDate startDate, @NotNull LocalDate endDate,
-			@Positive int expenseId, @Positive int projectId, @Positive int employeeId) {
+	public AddExpenseClaimRequest(double amount,LocalDate startDate, LocalDate endDate,
+			int expenseId,int projectId,  int employeeId) {
 		super();
 		this.amount = amount;
 		this.startDate = startDate;
