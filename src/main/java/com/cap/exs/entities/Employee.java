@@ -47,6 +47,7 @@ public class Employee {
 	@Past
 	private String empDOB;
 	
+	@NotNull
 	@Pattern(regexp = "[0-9]*",message = "Invalid")
 	@Size(min = 4,message="should be greater than equal to 1000")
 	private String empSalary;
