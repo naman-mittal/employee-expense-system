@@ -2,6 +2,7 @@ package com.cap.exs.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@PostMapping("/employees")
+	@PostMapping("/employee")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Employee addEmployee(@RequestBody Employee employee) {
+	public Employee addEmployee(@Valid @RequestBody Employee employee) {
 		
 		return employeeService.addEmployee(employee);
 	}
@@ -57,7 +58,7 @@ public class EmployeeController {
 	
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public Employee updateEmployee(@RequestBody Employee employee) {
+	public Employee updateEmployee(@Valid @RequestBody Employee employee) {
 		
 		return employeeService.updateEmployee(employee);
 	}

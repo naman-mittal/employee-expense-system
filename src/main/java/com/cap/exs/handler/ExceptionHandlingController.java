@@ -1,5 +1,8 @@
 package com.cap.exs.handler;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
@@ -25,7 +28,9 @@ public class ExceptionHandlingController {
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	  ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-	    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		
+		List<String> errors = e.getFieldErrors().stream().map((err)-> err.getField() + " : " +  err.getDefaultMessage()).collect(Collectors.toList());
+	    return new ResponseEntity<>(errors.toString(), HttpStatus.BAD_REQUEST);
 	  }
 //	
 	@ExceptionHandler(EmployeeNotFoundException.class)
