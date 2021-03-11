@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
@@ -20,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ExpenseClaim {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="expenseClaim_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "expenseClaim_sequence")
 	private int expenseCodeId;
 	
 	@Positive
@@ -50,10 +52,9 @@ public class ExpenseClaim {
 	
 	public ExpenseClaim() {}
 	
-	public ExpenseClaim(int expenseCodeId, double expenseAmount, LocalDate startDate, LocalDate endDate,
+	public ExpenseClaim(double expenseAmount, LocalDate startDate, LocalDate endDate,
 			Expense expense, Project project, Employee employee) {
 		super();
-		this.expenseCodeId = expenseCodeId;
 		this.expenseAmount = expenseAmount;
 		this.startDate = startDate;
 		this.endDate = endDate;

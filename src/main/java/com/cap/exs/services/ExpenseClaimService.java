@@ -36,6 +36,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	Logger logger = LoggerFactory.getLogger(ExpenseClaimService.class);
 	
+	@Transactional
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		// finding employee object from database
 		Employee employee = employeeService.findByEmployeeCode(expenseClaim.getEmployee().getEmpId());
