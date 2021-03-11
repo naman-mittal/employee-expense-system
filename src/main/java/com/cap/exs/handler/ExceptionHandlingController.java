@@ -20,6 +20,7 @@ import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.exceptions.InvalidUserException;
+import com.cap.exs.exceptions.NoIdProvidedException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 
@@ -114,6 +115,16 @@ public class ExceptionHandlingController {
 	
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
 	ResponseEntity<String> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e)
+	{
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	
+	
+	@ExceptionHandler(NoIdProvidedException.class)
+	ResponseEntity<String> handleNoIdProvidedException(NoIdProvidedException e)
 	{
 		
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);

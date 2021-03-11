@@ -95,6 +95,10 @@ public class EmployeeService implements IEmployeeService {
 	public Employee updateEmployee(Employee employee) {
 		
 		
+		Employee foundEmployee = this.findByEmployeeCode(employee.getEmpId());
+		
+		employee.setLoginDetails(foundEmployee.getLoginDetails());
+		
 		return employeeRepository.save(employee);
 	}
 	

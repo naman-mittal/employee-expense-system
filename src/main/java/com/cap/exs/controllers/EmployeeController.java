@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.exceptions.NoIdProvidedException;
 import com.cap.exs.services.EmployeeService;
 
 @RestController
@@ -60,6 +61,13 @@ public class EmployeeController {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public Employee updateEmployee(@Valid @RequestBody Employee employee) {
 		
+		if(employee.getEmpId()<=0)
+			throw new NoIdProvidedException("employee id should be there");
+			
+		if(employee.getLoginDetails()!=null)
+		{
+			employee.setLoginDetails(null);
+		}
 		return employeeService.updateEmployee(employee);
 	}
 	

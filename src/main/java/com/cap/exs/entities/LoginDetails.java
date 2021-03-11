@@ -15,6 +15,8 @@ public class LoginDetails {
 	
 	@Size(min = 8,max = 20)
 	private String password;		//employee password
+	
+	@Size(min = 4,max = 20)
 	private String role;			//employee role
 
 	//default constructor
