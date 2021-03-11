@@ -6,6 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Project {
@@ -13,15 +19,25 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int projectCode;
+	
+	@NotNull
+	@Size(min = 5,max = 50)
 	private String projectDescription;
+	
+	@NotNull
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
+	
+	@NotNull
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
 	public Project() {}
 	
-	public Project(int projectCode, String projectDescription, LocalDate startDate, LocalDate endDate) {
+	public Project( String projectDescription, LocalDate startDate, LocalDate endDate) {
 		super();
-		this.projectCode = projectCode;
 		this.projectDescription = projectDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
