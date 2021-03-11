@@ -1,309 +1,74 @@
-2021-03-11 10:35:35,147 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.1.7.Final
-2021-03-11 10:35:35,152 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:35:35,162 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:35:35,255 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-03-11 10:35:35,256 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-03-11 10:35:47,514 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:35:47,720 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 185 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:35:50,837 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:35:50,858 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:35:50,859 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:35:50,861 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:35:51,301 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:35:51,302 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 16044 ms
-2021-03-11 10:36:04,835 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:36:21,238 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.28.Final
-2021-03-11 10:37:13,685 INFO o.h.a.c.r.j.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-03-11 10:37:29,687 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2021-03-11 10:37:56,783 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2021-03-11 10:38:00,887 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:38:50,077 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:38:50,119 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:38:50,166 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:39:29,856 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-03-11 10:39:36,628 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-11 10:39:38,978 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:39:49,962 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:39:50,386 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-11 10:39:50,389 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
-2021-03-11 10:39:54,065 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
-2021-03-11 10:39:54,853 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
-2021-03-11 10:40:01,019 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 275.599 seconds (JVM running for 294.065)
-2021-03-11 10:40:04,024 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-5] Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:40:04,056 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:40:04,072 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
-2021-03-11 10:40:04,082 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
-2021-03-11 10:40:04,294 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:40:04,296 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:40:05,007 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:40:05,053 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:40:06,033 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:40:06,036 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:40:06,037 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:40:06,039 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:40:06,404 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:40:06,404 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2097 ms
-2021-03-11 10:40:06,494 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:40:06,510 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
-2021-03-11 10:40:06,582 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
-2021-03-11 10:40:06,584 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:40:08,451 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:40:08,455 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:40:08,467 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:40:09,244 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-03-11 10:40:09,309 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-11 10:40:09,384 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:40:09,568 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:40:09,576 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-11 10:40:09,577 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
-2021-03-11 10:40:09,615 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
-2021-03-11 10:40:09,639 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
-2021-03-11 10:40:09,970 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 5.767 seconds (JVM running for 303.017)
-2021-03-11 10:40:09,975 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2021-03-11 10:41:07,631 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-11 10:41:07,631 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2021-03-11 10:41:07,633 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
-2021-03-11 10:41:10,179 ERROR o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException: Cannot invoke "com.cap.exs.entities.LoginDetails.getUserName()" because the return value of "com.cap.exs.entities.Employee.getLoginDetails()" is null] with root cause
-java.lang.NullPointerException: Cannot invoke "com.cap.exs.entities.LoginDetails.getUserName()" because the return value of "com.cap.exs.entities.Employee.getLoginDetails()" is null
-	at com.cap.exs.services.EmployeeService.addEmployee(EmployeeService.java:36) ~[classes/:?]
-	at com.cap.exs.controllers.EmployeeController.addEmployee(EmployeeController.java:34) ~[classes/:?]
-	at com.cap.exs.controllers.EmployeeController$$FastClassBySpringCGLIB$$8e866a38.invoke(<generated>) ~[classes/:?]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779) ~[spring-aop-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.4.jar:5.3.4]
-	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:123) ~[spring-context-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.4.jar:5.3.4]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.4.jar:5.3.4]
-	at com.cap.exs.controllers.EmployeeController$$EnhancerBySpringCGLIB$$45041cd3.addEmployee(<generated>) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:564) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.43.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.4.jar:5.3.4]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.43.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.4.jar:5.3.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:887) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1684) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.43.jar:9.0.43]
-	at java.lang.Thread.run(Thread.java:832) [?:?]
-2021-03-11 10:41:42,669 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-9] Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:41:42,697 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-9] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:41:42,786 INFO c.z.h.HikariDataSource [Thread-9] HikariPool-2 - Shutdown initiated...
-2021-03-11 10:41:42,825 INFO c.z.h.HikariDataSource [Thread-9] HikariPool-2 - Shutdown completed.
-2021-03-11 10:41:43,165 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:41:43,166 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:41:43,855 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:41:43,893 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 37 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:41:44,074 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:41:44,075 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:41:44,076 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:41:44,077 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:41:44,175 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:41:44,176 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1001 ms
-2021-03-11 10:41:44,260 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:41:44,273 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
-2021-03-11 10:41:44,323 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
-2021-03-11 10:41:44,324 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:41:45,818 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:41:45,819 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:41:45,827 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:41:46,155 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-03-11 10:41:46,219 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-11 10:41:46,277 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:41:46,343 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:41:46,348 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-11 10:41:46,349 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
-2021-03-11 10:41:46,350 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
-2021-03-11 10:41:46,369 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
-2021-03-11 10:41:46,628 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 3.583 seconds (JVM running for 399.675)
-2021-03-11 10:41:46,631 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2021-03-11 10:41:56,022 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-11 10:41:56,023 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2021-03-11 10:41:56,025 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2021-03-11 10:41:56,097 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee) with 4 errors: [Field error in object 'employee' on field 'empDOJ': rejected value [null]; codes [NotNull.employee.empDOJ,NotNull.empDOJ,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empDOJ,empDOJ]; arguments []; default message [empDOJ]]; default message [must not be null]] [Field error in object 'employee' on field 'empEmailId': rejected value [null]; codes [NotNull.employee.empEmailId,NotNull.empEmailId,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empEmailId,empEmailId]; arguments []; default message [empEmailId]]; default message [must not be null]] [Field error in object 'employee' on field 'empDOB': rejected value [null]; codes [NotNull.employee.empDOB,NotNull.empDOB,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empDOB,empDOB]; arguments []; default message [empDOB]]; default message [must not be null]] [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [must not be null]] ]
-2021-03-11 10:43:13,952 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee) with 4 errors: [Field error in object 'employee' on field 'empEmailId': rejected value [null]; codes [NotNull.employee.empEmailId,NotNull.empEmailId,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empEmailId,empEmailId]; arguments []; default message [empEmailId]]; default message [must not be null]] [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [must not be null]] [Field error in object 'employee' on field 'empDOB': rejected value [null]; codes [NotNull.employee.empDOB,NotNull.empDOB,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empDOB,empDOB]; arguments []; default message [empDOB]]; default message [must not be null]] [Field error in object 'employee' on field 'empDOJ': rejected value [456]; codes [Pattern.employee.empDOJ,Pattern.empDOJ,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empDOJ,empDOJ]; arguments []; default message [empDOJ],[Ljavax.validation.constraints.Pattern$Flag;@434afcb0,^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\d\d$]; default message [Invalid date of joining.]] ]
-2021-03-11 10:45:57,305 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-7] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee) with 2 errors: [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [must not be null]] [Field error in object 'employee' on field 'empEmailId': rejected value [namaa]; codes [Pattern.employee.empEmailId,Pattern.empEmailId,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.empEmailId,empEmailId]; arguments []; default message [empEmailId],[Ljavax.validation.constraints.Pattern$Flag;@434afcb0,[A-Za-z0-9]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,4}]; default message [Invalid email address.]] ]
-2021-03-11 10:46:17,294 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-8] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee): [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [must not be null]] ]
-2021-03-11 10:47:07,689 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-15] Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:47:07,691 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:47:07,692 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-3 - Shutdown initiated...
-2021-03-11 10:47:07,700 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-3 - Shutdown completed.
-2021-03-11 10:47:07,875 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:47:07,877 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:47:08,738 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:47:08,787 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 48 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:47:08,947 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:47:08,948 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:47:08,949 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:47:08,950 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:47:08,986 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:47:08,986 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1105 ms
-2021-03-11 10:47:09,042 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:47:09,050 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
-2021-03-11 10:47:09,116 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
-2021-03-11 10:47:09,117 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:47:10,624 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:47:10,625 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:47:10,631 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:47:10,924 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-03-11 10:47:11,022 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-11 10:47:11,083 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:47:11,139 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:47:11,147 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-11 10:47:11,149 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
-2021-03-11 10:47:11,151 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
-2021-03-11 10:47:11,163 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
-2021-03-11 10:47:11,303 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 3.511 seconds (JVM running for 724.35)
-2021-03-11 10:47:11,305 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2021-03-11 10:47:19,591 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-11 10:47:19,592 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2021-03-11 10:47:19,594 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2021-03-11 10:47:19,647 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee): [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [LoginDetails cannot be null]] ]
-2021-03-11 10:49:19,375 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-21] Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:49:19,379 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-21] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:49:19,380 INFO c.z.h.HikariDataSource [Thread-21] HikariPool-4 - Shutdown initiated...
-2021-03-11 10:49:19,403 INFO c.z.h.HikariDataSource [Thread-21] HikariPool-4 - Shutdown completed.
-2021-03-11 10:49:19,596 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:49:19,598 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:49:20,242 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:49:20,284 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 41 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:49:20,470 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:49:20,472 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:49:20,474 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:49:20,475 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:49:20,515 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:49:20,515 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 912 ms
-2021-03-11 10:49:20,645 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:49:20,652 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
-2021-03-11 10:49:20,705 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
-2021-03-11 10:49:20,706 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:49:22,140 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:49:22,141 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:49:22,158 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:49:22,668 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-03-11 10:49:22,728 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-03-11 10:49:22,811 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:49:22,887 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:49:22,897 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2021-03-11 10:49:22,898 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
-2021-03-11 10:49:22,899 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
-2021-03-11 10:49:22,912 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
-2021-03-11 10:49:23,078 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 3.56 seconds (JVM running for 856.125)
-2021-03-11 10:49:23,081 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2021-03-11 10:49:27,302 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-03-11 10:49:27,303 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
-2021-03-11 10:49:27,304 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 1 ms
-2021-03-11 10:49:27,326 WARN o.s.w.s.h.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.cap.exs.entities.Employee com.cap.exs.controllers.EmployeeController.addEmployee(com.cap.exs.entities.Employee): [Field error in object 'employee' on field 'loginDetails': rejected value [null]; codes [NotNull.employee.loginDetails,NotNull.loginDetails,NotNull.com.cap.exs.entities.LoginDetails,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.loginDetails,loginDetails]; arguments []; default message [loginDetails]]; default message [LoginDetails cannot be null]] ]
-2021-03-11 10:55:11,354 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-27] Shutting down ExecutorService 'applicationTaskExecutor'
-2021-03-11 10:55:11,358 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-27] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:55:11,359 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-5 - Shutdown initiated...
-2021-03-11 10:55:11,367 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-5 - Shutdown completed.
-2021-03-11 10:55:11,659 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 10:55:11,660 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 10:55:12,242 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 10:55:12,279 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 36 ms. Found 5 JPA repository interfaces.
-2021-03-11 10:55:12,485 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 10:55:12,487 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 10:55:12,488 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 10:55:12,488 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 10:55:12,563 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 10:55:12,564 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 898 ms
-2021-03-11 10:55:12,692 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-03-11 10:55:12,704 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
-2021-03-11 10:55:12,765 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
-2021-03-11 10:55:12,766 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2021-03-11 10:55:14,100 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-03-11 10:55:14,100 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:55:14,106 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2021-03-11 10:55:14,273 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'exceptionHandlingController' defined in file [C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes\com\cap\exs\handler\ExceptionHandlingController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.cap.exs.handler.ExceptionHandlingController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-	Lambda expression's parameter e cannot redeclare another local variable defined in an enclosing scope. 
-
-2021-03-11 10:55:14,275 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
-2021-03-11 10:55:14,276 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Shutdown initiated...
-2021-03-11 10:55:14,286 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Shutdown completed.
-2021-03-11 10:55:14,287 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
-2021-03-11 10:55:14,306 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
+2021-03-11 13:08:03,812 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.1.7.Final
+2021-03-11 13:08:03,855 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on LAPTOP-M21BMI1H with PID 15452 (C:\Users\91639\Desktop\Project\employee-expense-system\target\classes started by 91639 in C:\Users\91639\Desktop\Project\employee-expense-system)
+2021-03-11 13:08:03,860 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-03-11 13:08:03,913 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-03-11 13:08:03,914 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-03-11 13:08:04,693 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-11 13:08:04,753 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 52 ms. Found 5 JPA repository interfaces.
+2021-03-11 13:08:05,247 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-03-11 13:08:05,256 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-11 13:08:05,257 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-03-11 13:08:05,257 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-11 13:08:05,384 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-03-11 13:08:05,385 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1468 ms
+2021-03-11 13:08:05,511 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-11 13:08:05,557 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-11 13:08:05,667 INFO o.h.a.c.r.j.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-11 13:08:05,782 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-03-11 13:08:05,995 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-03-11 13:08:06,014 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-03-11 13:08:07,138 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-11 13:08:07,155 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-11 13:08:07,198 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-03-11 13:08:07,801 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-11 13:08:07,916 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-03-11 13:08:08,004 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-11 13:08:08,159 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-03-11 13:08:08,184 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-11 13:08:08,185 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2021-03-11 13:08:08,203 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2021-03-11 13:08:08,236 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2021-03-11 13:08:08,558 INFO o.s.b.StartupInfoLogger [restartedMain] Started EmployeeExpenseSystemApplication in 5.151 seconds (JVM running for 6.125)
+2021-03-11 13:12:06,793 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-5] Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-11 13:12:06,798 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-11 13:12:06,803 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2021-03-11 13:12:06,807 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2021-03-11 13:12:06,912 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on LAPTOP-M21BMI1H with PID 15452 (C:\Users\91639\Desktop\Project\employee-expense-system\target\classes started by 91639 in C:\Users\91639\Desktop\Project\employee-expense-system)
+2021-03-11 13:12:06,913 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-03-11 13:12:07,225 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-11 13:12:07,251 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 24 ms. Found 5 JPA repository interfaces.
+2021-03-11 13:12:07,335 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-03-11 13:12:07,336 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-03-11 13:12:07,336 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-03-11 13:12:07,337 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-11 13:12:07,362 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-03-11 13:12:07,362 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 446 ms
+2021-03-11 13:12:07,376 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2021-03-11 13:12:07,377 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2021-03-11 13:12:07,383 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-03-11 10:55:14,339 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'exceptionHandlingController' defined in file [C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes\com\cap\exs\handler\ExceptionHandlingController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.cap.exs.handler.ExceptionHandlingController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-	Lambda expression's parameter e cannot redeclare another local variable defined in an enclosing scope. 
+2021-03-11 13:12:07,400 ERROR o.s.b.d.LoggingFailureAnalysisReporter [restartedMain] 
 
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1316) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917) ~[spring-context-5.3.4.jar:5.3.4]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:582) ~[spring-context-5.3.4.jar:5.3.4]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767) ~[spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426) [spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326) [spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311) [spring-boot-2.4.3.jar:2.4.3]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) [spring-boot-2.4.3.jar:2.4.3]
-	at com.cap.exs.EmployeeExpenseSystemApplication.main(EmployeeExpenseSystemApplication.java:10) [classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:564) ~[?:?]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.4.3.jar:2.4.3]
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.cap.exs.handler.ExceptionHandlingController]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
-	Lambda expression's parameter e cannot redeclare another local variable defined in an enclosing scope. 
+***************************
+APPLICATION FAILED TO START
+***************************
 
-	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:225) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-5.3.4.jar:5.3.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1308) ~[spring-beans-5.3.4.jar:5.3.4]
-	... 23 more
-Caused by: java.lang.Error: Unresolved compilation problem: 
-	Lambda expression's parameter e cannot redeclare another local variable defined in an enclosing scope. 
+Description:
 
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+<<<<<<< HEAD
+=======
 	at com.cap.exs.handler.ExceptionHandlingController.<init>(ExceptionHandlingController.java:32) ~[classes/:?]
 	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:64) ~[?:?]
@@ -2237,37 +2002,4 @@ Consider the following:
 	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
 	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
 
-2021-03-11 13:39:49,437 INFO o.s.b.StartupInfoLogger [restartedMain] Starting EmployeeExpenseSystemApplication using Java 15.0.1 on malware with PID 35608 (C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system\target\classes started by Naman Mittal in C:\Users\Naman Mittal\Desktop\Academics\Capgemini Training\Project\employee-expense-system)
-2021-03-11 13:39:49,438 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
-2021-03-11 13:39:50,217 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-03-11 13:39:50,261 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 44 ms. Found 5 JPA repository interfaces.
-2021-03-11 13:39:50,419 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2021-03-11 13:39:50,420 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2021-03-11 13:39:50,421 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2021-03-11 13:39:50,421 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.43]
-2021-03-11 13:39:50,454 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2021-03-11 13:39:50,454 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1013 ms
-2021-03-11 13:39:50,493 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
-2021-03-11 13:39:50,494 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
-2021-03-11 13:39:50,503 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-03-11 13:39:50,508 ERROR o.s.b.d.LoggingFailureAnalysisReporter [restartedMain] 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
-
-Reason: Failed to determine a suitable driver class
-
-
-Action:
-
-Consider the following:
-	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
-	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
-
+>>>>>>> d0b403eefc94789cd237d1fbb90e7d0f31800a31
