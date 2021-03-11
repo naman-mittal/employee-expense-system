@@ -1,14 +1,22 @@
 package com.cap.exs.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 @Entity
 public class LoginDetails {
 	
 	@SequenceGenerator(name="employee_sequence",allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "employee_sequence")
 	@Id
+<<<<<<< HEAD
 	private int id;	//employee id
+=======
+	private int id;		 //employee id
+	@Size(min = 4,max = 20)
+>>>>>>> d73cb18a11014fbed1d586000b70c2ee43889d9d
 	private String userName;		//employee username
+	
+	@Size(min = 8,max = 20)
 	private String password;		//employee password
 	private String role;			//employee role
 
