@@ -13,6 +13,7 @@ import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Project;
 import com.cap.exs.repos.IProjectRepository;
 import com.cap.exs.service_interfaces.IProjectService;
+import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.ProjectAlreadyExistException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 
@@ -23,7 +24,7 @@ public class ProjectService implements IProjectService{
 	@Autowired
 	IProjectRepository projectRepository;
 	
-	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	Logger logger = LoggerFactory.getLogger(ProjectService.class);
 	
 	//change this....DONE
 	public List<Project> getAllProject(){
@@ -54,7 +55,7 @@ public class ProjectService implements IProjectService{
 		return projectRepository.save(project);
 	}
 	
-	//change this....DONE
+	//change this....
 	public Project deleteProjectById(int id) {
 //		Project project = projectRepository.findById(id).get();
 		Project project = this.findByCode(id);
@@ -63,7 +64,7 @@ public class ProjectService implements IProjectService{
 		}
 		catch(DataIntegrityViolationException  e) {
 			logger.error("No such project found", ProjectNotFoundException.class);
-			throw new ProjectNotFoundException("No such project exist with given Id: " + project);
+			throw new EmployeeAssociatedException("No such project exist with given Id: " + project);
 		}
 		return project;
 	}
