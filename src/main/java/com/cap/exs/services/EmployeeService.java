@@ -30,7 +30,7 @@ public class EmployeeService implements IEmployeeService {
 	@Autowired
 	LoginService loginService;
 	
-	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 	
 	public Employee addEmployee(Employee employee) {
 		
@@ -51,6 +51,7 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(employees.isEmpty())
 		{
+			logger.error("no employees found!!",EmployeeNotFoundException.class);
 			throw new EmployeeNotFoundException("no employees found!!");
 		}
 		
@@ -64,6 +65,7 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(!employee.isPresent())
 		{
+			logger.error("no employee found with id = " + empId,EmployeeNotFoundException.class);
 			throw new EmployeeNotFoundException("no employee found with id = " + empId);
 		}
 		
@@ -81,6 +83,7 @@ public class EmployeeService implements IEmployeeService {
 		}
 		catch(DataIntegrityViolationException e)
 		{
+			logger.error("expense claim exist for employee = " + employee,ExpenseClaimAssociatedException.class);
 			throw new ExpenseClaimAssociatedException("expense claim exist for employee = " + employee);
 		}
 		
@@ -101,6 +104,7 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(employee==null)
 		{
+			logger.error("no employee found with username = " + username + " AND password = " + password + " AND role = " + role,EmployeeNotFoundException.class);
 			throw new EmployeeNotFoundException("no employee found with username = " + username + " AND password = " + password + " AND role = " + role);
 		}
 		
