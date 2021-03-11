@@ -46,7 +46,7 @@ public class ExceptionHandlingController {
 	}
 	
 	@ExceptionHandler(ExpenseClaimAssociatedException.class)
-	ResponseEntity<String> ExpenseClaimAssociatedException(ExpenseClaimAssociatedException e)
+	ResponseEntity<String> handleExpenseClaimAssociatedException(ExpenseClaimAssociatedException e)
 	{
 		
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
