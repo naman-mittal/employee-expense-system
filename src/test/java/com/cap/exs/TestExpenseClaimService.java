@@ -150,7 +150,7 @@ public class TestExpenseClaimService {
 		LocalDate endDate = LocalDate.of(2021, 01, 20);
 		expenseClaim2.setEndDate(endDate);
 		
-		Employee employee = new Employee("Naman", null, null, null, null, null, null, null, new LoginDetails());
+		Employee employee = new Employee("Naman", null, null, null, null, null, new LoginDetails());
 		employee.setEmpId(1);
 		expenseClaim1.setEmployee(employee);
 		expenseClaim2.setEmployee(employee);
