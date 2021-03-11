@@ -11,11 +11,13 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
+import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.exceptions.InvalidUserException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
@@ -43,6 +45,11 @@ public class ExceptionHandlingController {
 	
 	@ExceptionHandler(ExpenseClaimNotFoundException.class)
 	  ResponseEntity<String> handleExpenseClaimNotFoundException(ExpenseClaimNotFoundException e) {
+	    return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+	  }
+	
+	@ExceptionHandler(ExpenseNotFoundException.class)
+	  ResponseEntity<String> handleExpenseNotFoundException(ExpenseNotFoundException e) {
 	    return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 	  }
 	
@@ -84,13 +91,13 @@ public class ExceptionHandlingController {
 	
 	
 	
-//	@ExceptionHandler(HttpMessageNotReadableException.class)
-//	ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException e)
-//	{
-//		
-//		return new ResponseEntity<>(e.getMostSpecificCause().getMessage(),HttpStatus.BAD_REQUEST);
-//		
-//	}
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException e)
+	{
+		
+		return new ResponseEntity<>(e.getMostSpecificCause().getMessage(),HttpStatus.BAD_REQUEST);
+		
+	}
 	
 	
 	
@@ -102,4 +109,14 @@ public class ExceptionHandlingController {
 		
 	}
 	
+	
+	
+	
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+	ResponseEntity<String> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e)
+	{
+		
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		
+	}
 }
