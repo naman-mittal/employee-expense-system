@@ -1,34 +1,31 @@
 package com.cap.exs;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.cap.exs.entities.*;
-import com.cap.exs.repos.*;
-import com.cap.exs.services.*;
+import com.cap.exs.entities.Project;
+import com.cap.exs.repos.IProjectRepository;
+import com.cap.exs.services.ExpenseClaimService;
+import com.cap.exs.services.ProjectService;
 
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class TestProjectService {
+class TestProjectService {
 	
 	@Autowired
 	ProjectService projectService;
 	
-	@MockBean
+	@Autowired
 	IProjectRepository projectRepository;
 	
 	@Autowired
@@ -36,17 +33,31 @@ public class TestProjectService {
 	
 	
 	@Test
-	public void testGetAllProject(){
-		Project project1 = new Project( "Testing", LocalDate.of(2021, 01, 11), LocalDate.of(2021, 06, 11));
-		Project project2 = new Project( "Full-Stack", LocalDate.of(2021, 01, 12), LocalDate.of(2021, 06, 12));
+	void testGetAllProject(){
 		
-		when(projectRepository.findAll()).thenReturn(Arrays.asList(project1,project2));
 		assertEquals(2, projectService.getAllProject().size());	
 	}
 	
 	
-	@Test
-	public void testAddProject() {
+	//@Test
+	void testAddProject() {
+		Project project = new Project();
+		project.setProjectDescription("Java");
+		
+		LocalDate startDate = LocalDate.of(2021, 03, 01);
+		project.setStartDate(startDate);
+		
+		LocalDate endDate = LocalDate.of(2021, 06, 01);
+		project.setEndDate(endDate);
+		
+		
+		assertNotNull(projectService.addProject(project));	
+	}
+	
+	
+	//@Test
+	void testUpdateProject() {
+		
 		Project project = new Project();
 		project.setProjectCode(1);
 		project.setProjectDescription("Java");
@@ -57,35 +68,27 @@ public class TestProjectService {
 		LocalDate endDate = LocalDate.of(2021, 06, 01);
 		project.setEndDate(endDate);
 		
-//		Project project = new Project(10, "XYZ", LocalDate.of(2021, 03, 01), LocalDate.of(2021, 06, 20));
-		
-		when(projectRepository.save(project)).thenReturn(project);
-//		assertEquals(project, projectService.addProject(project));	
-	}
-	
-	
-	@Test
-	public void testUpdateProject() {
+		assertNotNull(projectService.updateProject(project));
 		
 	}
 	
 	
-	@Test
-	public void testDeleteProjectById() {
+	//@Test
+	void testDeleteProjectById() {
 		projectService.deleteProjectById(1);
-		assertEquals((int) 1,(int) projectRepository.count());
+		assertEquals(1, projectRepository.count());
 	}
 	
 	
-	@Test
-	public void testGetAllProjectCodes(){
+	//@Test
+	void testGetAllProjectCodes(){
 		List<Integer> allProjectCodes = projectService.getAllProjectCodes();
 		assertEquals(2, allProjectCodes.size());	
 	}
 	
 	
-	@Test
-	public void testFindByCode() {
+	//@Test
+	void testFindByCode() {
 		Project project = projectService.findByCode(1);
 		assertNotNull(project);
 	}
