@@ -34,7 +34,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	@Autowired
 	ExpenseService expenseService;
 	
-	Logger logger = LoggerFactory.getLogger(LoggingController.class);
+	Logger logger = LoggerFactory.getLogger(ExpenseClaimService.class);
 	
 	public ExpenseClaim addExpenseClaim(ExpenseClaim expenseClaim) {
 		// finding employee object from database
