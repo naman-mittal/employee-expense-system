@@ -14,6 +14,7 @@ import com.cap.exs.entities.Project;
 import com.cap.exs.repos.IProjectRepository;
 import com.cap.exs.service_interfaces.IProjectService;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ProjectAlreadyExistException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 
@@ -31,8 +32,9 @@ public class ProjectService implements IProjectService{
 		List<Project> projects = projectRepository.findAll();
 		
 		if(projects.isEmpty()) {
-			logger.error("No Projects Found", ProjectNotFoundException.class);
-			throw new ProjectNotFoundException("No projects found...");
+			String errorMessage = "No Projects Found";
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		
 		return projects;
@@ -40,31 +42,30 @@ public class ProjectService implements IProjectService{
 	
 	
 	public Project addProject(Project project) {
-		List<Integer> allProjects = this.getAllProjectCodes();
-		if(allProjects.contains((Object)project)) {
-			logger.error("Project with this code already exists", ProjectAlreadyExistException.class);
-			throw new ProjectAlreadyExistException("Project with this code already exists...");
-		}
 		
 		return projectRepository.save(project);
 	}
 	
-//	public List<Project> getAllProjectCode(int Id){}
+
 	
 	public Project updateProject(Project project) {
+		
+		this.findByCode(project.getProjectCode());
+		
 		return projectRepository.save(project);
 	}
 	
 	//change this....
 	public Project deleteProjectById(int id) {
-//		Project project = projectRepository.findById(id).get();
+
 		Project project = this.findByCode(id);
 		try {
 			projectRepository.delete(project);
 		}
 		catch(DataIntegrityViolationException  e) {
-			logger.error("No such project found", ProjectNotFoundException.class);
-			throw new EmployeeAssociatedException("No such project exist with given Id: " + project);
+			String errorMessage = String.format("expense claim exist for project = %s", project.toString());
+			logger.error(errorMessage, ExpenseClaimAssociatedException.class);
+			throw new ExpenseClaimAssociatedException(errorMessage);
 		}
 		return project;
 	}
@@ -77,8 +78,9 @@ public class ProjectService implements IProjectService{
 		List<Integer> projectCodes = projectRepository.getAllProjectCodes();
 		
 		if(projectCodes.isEmpty()) {
-			logger.error("No Project Code Found", ProjectNotFoundException.class);
-			throw new ProjectNotFoundException("No project code found...");
+			String errorMessage = "No projects found...";
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		
 		return projectCodes;
@@ -89,8 +91,9 @@ public class ProjectService implements IProjectService{
 		Optional<Project> project = projectRepository.findById(projectCode);
 		if(!project.isPresent())
 		{
-			logger.error("No Projects Found", ProjectNotFoundException.class);
-			throw new ProjectNotFoundException("No project found with projectCode: " + projectCode);
+			String errorMessage = String.format("no project found with id = %d", projectCode);
+			logger.error(errorMessage, ProjectNotFoundException.class);
+			throw new ProjectNotFoundException(errorMessage);
 		}
 		return project.get();		
 	}

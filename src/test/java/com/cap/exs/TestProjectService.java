@@ -37,8 +37,8 @@ public class TestProjectService {
 	
 	@Test
 	public void testGetAllProject(){
-		Project project1 = new Project(11, "Testing", LocalDate.of(2021, 01, 11), LocalDate.of(2021, 06, 11));
-		Project project2 = new Project(12, "Full-Stack", LocalDate.of(2021, 01, 12), LocalDate.of(2021, 06, 12));
+		Project project1 = new Project( "Testing", LocalDate.of(2021, 01, 11), LocalDate.of(2021, 06, 11));
+		Project project2 = new Project( "Full-Stack", LocalDate.of(2021, 01, 12), LocalDate.of(2021, 06, 12));
 		
 		when(projectRepository.findAll()).thenReturn(Arrays.asList(project1,project2));
 		assertEquals(2, projectService.getAllProject().size());	

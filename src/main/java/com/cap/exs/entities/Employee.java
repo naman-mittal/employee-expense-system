@@ -13,9 +13,6 @@ import javax.validation.constraints.Size;
 
 import com.cap.exs.validators.Past;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 @Entity
 public class Employee {
 

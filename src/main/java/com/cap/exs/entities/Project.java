@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,7 +18,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Project {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "project_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "project_sequence")
 	private int projectCode;
 	
 	@NotNull
