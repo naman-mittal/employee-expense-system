@@ -29,7 +29,7 @@ public class ExceptionHandlingController {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	  ResponseEntity<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
 		
-		List<String> errors = e.getFieldErrors().stream().map((err)-> err.getField() + " : " +  err.getDefaultMessage()).collect(Collectors.toList());
+		List<String> errors = e.getFieldErrors().stream().map(err-> err.getField() + " : " +  err.getDefaultMessage()).collect(Collectors.toList());
 	    return new ResponseEntity<>(errors.toString(), HttpStatus.BAD_REQUEST);
 	  }
 //	

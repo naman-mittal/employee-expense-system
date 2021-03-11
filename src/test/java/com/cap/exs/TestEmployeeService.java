@@ -80,7 +80,7 @@ public class TestEmployeeService {
 	//@Test
 	public void testFindByEmployeeCode()
 	{
-		Employee emp = new Employee("Naman", null, null, null, null, null, null, null, new LoginDetails());
+		Employee emp = new Employee("Naman", null, null, null, null, null, new LoginDetails());
 		emp.setEmpId(1);
 		when(employeeRepository.findById(1)).thenReturn(Optional.of(emp));
 		assertEquals(emp,employeeService.findByEmployeeCode(2));
@@ -112,7 +112,7 @@ public class TestEmployeeService {
 	@Test
 	public void testDeleteEmployeeById()
 	{
-		Employee emp = new Employee("Naman", null, null, null, null, null, null, null, new LoginDetails());
+		Employee emp = new Employee();
 		emp.setEmpId(1);
 		when(employeeRepository.findById(1)).thenReturn(Optional.of(emp));
 		employeeService.deleteEmpById(1);
@@ -124,7 +124,7 @@ public class TestEmployeeService {
 	@Test(expected = EmployeeNotFoundException.class)
 	public void testDeleteNonExistingEmployee()
 	{
-		Employee emp = new Employee("Naman", null, null, null, null, null, null, null, new LoginDetails());
+		Employee emp = new Employee("Naman", null, null, null, null, null, new LoginDetails());
 		emp.setEmpId(100);
 		when(employeeRepository.findById(emp.getEmpId())).thenThrow(EmployeeNotFoundException.class);
 		employeeService.deleteEmpById(emp.getEmpId());
