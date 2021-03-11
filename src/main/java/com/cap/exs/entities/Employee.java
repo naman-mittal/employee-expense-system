@@ -6,17 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.cap.exs.validators.Past;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="employee_sequence",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "employee_sequence")
 	private int empId;
 	
 	@NotNull
@@ -47,6 +52,7 @@ public class Employee {
 	@Past
 	private String empDOB;
 	
+	@NotNull
 	@Pattern(regexp = "[0-9]*",message = "Invalid")
 	@Size(min = 4,message="should be greater than equal to 1000")
 	private String empSalary;

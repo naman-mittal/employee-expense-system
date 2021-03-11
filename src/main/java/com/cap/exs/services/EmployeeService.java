@@ -3,6 +3,8 @@
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,10 +94,17 @@ public class EmployeeService implements IEmployeeService {
 		
 	}
 	
+	@Transactional
 	public Employee updateEmployee(Employee employee) {
 		
 		
-		return employeeRepository.save(employee);
+		Employee foundEmployee = this.findByEmployeeCode(employee.getEmpId());
+		
+		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
+		foundEmployee.setEmpDomain(employee.getEmpDomain());
+		foundEmployee.setEmpPAN(employee.getEmpPAN());
+		
+		return foundEmployee;
 	}
 	
 	public Employee getDetailsByAll(String username, String password, String role) {
