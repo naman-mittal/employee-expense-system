@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Expense {
@@ -11,6 +12,7 @@ public class Expense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int expenseCode;
+	@NotNull
 	private String expenseType;
 	private String expenseDescription;
 	public int getExpenseCode() {
