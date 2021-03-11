@@ -37,8 +37,9 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(loginDetails!=null)
 		{
-			logger.error("username " + loginDetails.getUserName() + " already taken!!", UsernameAlreadyExistException.class);
-			throw new UsernameAlreadyExistException("username " + loginDetails.getUserName() + " already exist!!");
+			String errorMessage = String.format("username %s already taken!!", loginDetails.getUserName());
+			logger.error(errorMessage, UsernameAlreadyExistException.class);
+			throw new UsernameAlreadyExistException(errorMessage);
 		}
 		
 		return employeeRepository.save(employee);
@@ -50,8 +51,9 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(employees.isEmpty())
 		{
-			logger.error("no employees found!!",EmployeeNotFoundException.class);
-			throw new EmployeeNotFoundException("no employees found!!");
+			String errorMessage = "no employees found!!";
+			logger.error(errorMessage,EmployeeNotFoundException.class);
+			throw new EmployeeNotFoundException(errorMessage);
 		}
 		
 		return employees;
@@ -64,8 +66,9 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(!employee.isPresent())
 		{
-			logger.error("no employee found with id = " + empId,EmployeeNotFoundException.class);
-			throw new EmployeeNotFoundException("no employee found with id = " + empId);
+			String errorMessage = String.format("no employee found with id = %d", empId);
+			logger.error(errorMessage,EmployeeNotFoundException.class);
+			throw new EmployeeNotFoundException(errorMessage);
 		}
 		
 		return employee.get();
@@ -82,8 +85,9 @@ public class EmployeeService implements IEmployeeService {
 		}
 		catch(DataIntegrityViolationException e)
 		{
-			logger.error("expense claim exist for employee = " + employee,ExpenseClaimAssociatedException.class);
-			throw new ExpenseClaimAssociatedException("expense claim exist for employee = " + employee);
+			String errorMessage = String.format("expense claim exist for employee = %s", employee.toString());
+			logger.error(errorMessage,ExpenseClaimAssociatedException.class);
+			throw new ExpenseClaimAssociatedException(errorMessage);
 		}
 		
 	}
@@ -104,8 +108,9 @@ public class EmployeeService implements IEmployeeService {
 		
 		if(employee==null)
 		{
-			logger.error("no employee found with username = " + username + " AND password = " + password + " AND role = " + role,EmployeeNotFoundException.class);
-			throw new EmployeeNotFoundException("no employee found with username = " + username + " AND password = " + password + " AND role = " + role);
+			String errorMessage = String.format("no employee found with username = %s And password = %s and role = %s", username,password,role);
+			logger.error(errorMessage,EmployeeNotFoundException.class);
+			throw new EmployeeNotFoundException(errorMessage);
 		}
 		
 		return employee;

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,7 +23,7 @@ public class ExpenseClaim {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int expenseCodeId;
 	
-	@NotNull
+	@Positive
 	private double expenseAmount;
 	
 	@NotNull
@@ -35,12 +36,15 @@ public class ExpenseClaim {
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Expense expense;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Project project;
 	
+	@NotNull
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Employee employee;
 	

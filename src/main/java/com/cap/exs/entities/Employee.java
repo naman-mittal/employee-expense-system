@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -29,9 +28,11 @@ public class Employee {
 	private String empPAN;
 	
 	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 4,max = 20)
 	private String empDesignation;
 	
 	@Pattern(regexp = "[a-z A-Z]*",message = "Invalid")
+	@Size(min = 4,max = 20)
 	private String empDomain;
 	
 	
@@ -55,7 +56,7 @@ public class Employee {
 	private String empEmailId;
 	
 	@NotNull(message = "LoginDetails cannot be null")
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
 	private LoginDetails loginDetails;
 
 	
@@ -67,13 +68,11 @@ public class Employee {
 		super();
 	}
 
-	public Employee(String empName, String empPAN, String empDesignation, String empDomain, String empDOJ,
+	public Employee(String empName, String empPAN, String empDOJ,
 			String empDOB, String empSalary, String empEmailId, LoginDetails loginDetails) {
 		super();
 		this.empName = empName;
 		this.empPAN = empPAN;
-		this.empDesignation = empDesignation;
-		this.empDomain = empDomain;
 		this.empDOJ = empDOJ;
 		this.empDOB = empDOB;
 		this.empSalary = empSalary;
