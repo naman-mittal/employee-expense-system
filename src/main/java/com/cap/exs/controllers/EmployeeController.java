@@ -34,12 +34,16 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	// Add a new Employee
+	
 	@PostMapping("/employee")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Employee addEmployee(@Valid @RequestBody Employee employee) {
 		
 		return employeeService.addEmployee(employee);
 	}
+	
+	// Get all the employees
 	
 	@GetMapping("/employees")
 	@ResponseStatus(code = HttpStatus.OK)
@@ -48,6 +52,8 @@ public class EmployeeController {
 		return employeeService.getEmployees();
 	}
 	
+	// Find an employee by its id
+	
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public Employee findByEmployeeCode(@PathVariable("id") @Min(1) int empId) {
@@ -55,12 +61,16 @@ public class EmployeeController {
 		return employeeService.findByEmployeeCode(empId);		
 	}
 	
+	// delete an employee by its id
+	
 	@DeleteMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteEmpById(@PathVariable("id") @Min(1) int empId) {
 		
 		employeeService.deleteEmpById(empId);
 	}
+	
+	// update employee's designation,domain and PAN
 	
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -75,6 +85,8 @@ public class EmployeeController {
 		
 		return employeeService.updateEmployee(employee);
 	}
+	
+	// Get employee by its username, password and role
 	
 	@GetMapping("/employee")
 	@ResponseStatus(code = HttpStatus.OK)
