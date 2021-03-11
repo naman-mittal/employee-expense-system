@@ -1,6 +1,7 @@
 package com.cap.exs.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 @Entity
 public class LoginDetails {
 	
@@ -8,7 +9,10 @@ public class LoginDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "employee_sequence")
 	@Id
 	private int id;		 //employee id
+	@Size(min = 4,max = 20)
 	private String userName;		//employee username
+	
+	@Size(min = 8,max = 20)
 	private String password;		//employee password
 	private String role;			//employee role
 
