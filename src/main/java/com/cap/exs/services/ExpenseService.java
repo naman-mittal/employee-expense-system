@@ -71,6 +71,7 @@ public class ExpenseService implements IExpenseService {
 		
 		public Expense updateExpense(Expense expense)
 		{	
+			this.findByCode(expense.getExpenseCode());
 			return expenseRepository.save(expense);
 		}
 		

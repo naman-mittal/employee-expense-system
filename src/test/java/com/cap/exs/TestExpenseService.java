@@ -3,6 +3,8 @@ package com.cap.exs;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,9 @@ public class TestExpenseService {
 	@Autowired
 	ExpenseService expenseService;
 	
-	@Test
+	
+	
+	//@Test
 	public void testAddExpense()
 	{
 		Expense exp = new Expense();
@@ -41,9 +45,42 @@ public class TestExpenseService {
 	public void testFindByExpenseCode()
 	{
 			Expense exp = expenseService.findByCode(1);
-			assertNotNull(exp);
-			
+			assertNotNull(exp);	
 	}
+	
+	
+	
+	//@Test
+		void testUpdateExpense() {
+			Expense exp = new Expense();
+			exp.setExpenseCode(101);
+			exp.setExpenseType("abc");
+			exp.setExpenseDescription("decs");
+			assertNotNull(expenseService.updateExpense(exp));
+		}
+		
+		
+		
+	//@Test
+	void testGetAllExpenseCodes(){
+		List<Integer> allExpenseCodes = expenseService.getAllExpenseCode();
+		assertEquals(2, allExpenseCodes.size());	
+	}
+	
+	
+	
+	//@Test
+		void testDeleteExpenseByCode() {
+			expenseService.deleteExpenseByCode(1);
+			assertEquals(1, expenseRepository.count());
+		}
+	
+		
+		
+	//@Test
+	void testGetAllExpenses(){
+		assertEquals(2, expenseService.getAllExpenses().size());	
+		}
 	
 	
 
