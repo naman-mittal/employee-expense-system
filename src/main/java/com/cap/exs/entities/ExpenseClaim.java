@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.cap.exs.exceptions.InvalidEndDateException;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -24,10 +25,12 @@ public class ExpenseClaim {
 	@NotNull
 	private double expenseAmount;
 	
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate startDate;
 	
+	@NotNull
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
@@ -84,7 +87,11 @@ public class ExpenseClaim {
 	}
 
 	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+		if(endDate.isAfter(startDate)) {
+	           this.endDate = endDate;
+	         } else {
+	           throw new InvalidEndDateException("End date should be the date after start date");
+	         }
 	}
 
 	public Expense getExpense() {

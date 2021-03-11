@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -65,10 +66,10 @@ public class ExpenseClaimController {
 		return expenseClaimService.getAllClaimsByEmployee(emp);
 	}
 	
-//	@GetMapping("/expenseClaims")
-//	@ResponseStatus(code = HttpStatus.OK)
-//	public List<ExpenseClaim> findAllClaimsBetweenDates(@RequestParam(name = "startDate") LocalDate startDate ,@RequestParam(name = "endDate") LocalDate endDate){
-//		return expenseClaimService.findAllClaimsBetweenDates(startDate, endDate);
-//	}
+	@GetMapping("/expenseClaims/dates")
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ExpenseClaim> findAllClaimsBetweenDates(@RequestParam("startDate")@DateTimeFormat(pattern="MM/dd/yyyy") LocalDate startDate ,@RequestParam("endDate")@DateTimeFormat(pattern="MM/dd/yyyy") LocalDate endDate){
+		return expenseClaimService.findAllClaimsBetweenDates(startDate, endDate);
+	}
 
 }
