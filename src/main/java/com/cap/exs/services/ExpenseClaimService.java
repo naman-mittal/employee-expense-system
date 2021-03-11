@@ -81,7 +81,7 @@ public class ExpenseClaimService implements IExpenseClaimService {
 	
 	public ExpenseClaim updateExpenseClaim(ExpenseClaim expenseClaim) {
 		
-		return null;
+		return expenseClaimRepository.save(expenseClaim);
 		
 	}
 	
