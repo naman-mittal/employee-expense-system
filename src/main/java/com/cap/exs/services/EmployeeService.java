@@ -108,7 +108,7 @@ public class EmployeeService implements IEmployeeService {
 		}
 		catch(DataIntegrityViolationException e)
 		{
-			String errorMessage = String.format("expense claim exist for employee = %s Cannot delete!", employee.toString());
+			String errorMessage = String.format("Cannot delete! Expense claim exist for employee = %s", employee.toString());
 			logger.error(errorMessage,ExpenseClaimAssociatedException.class);
 			throw new ExpenseClaimAssociatedException(errorMessage);
 		}
