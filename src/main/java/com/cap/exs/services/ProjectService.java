@@ -61,7 +61,7 @@ public class ProjectService implements IProjectService{
 			projectRepository.delete(project);
 		}
 		catch(DataIntegrityViolationException  e) {
-			String errorMessage = String.format("expense claim exist for project = %s", project.toString());
+			String errorMessage = String.format("expense claim exist for project = %s Cannot delete!", project.toString());
 			logger.error(errorMessage, ExpenseClaimAssociatedException.class);
 			throw new ExpenseClaimAssociatedException(errorMessage);
 		}

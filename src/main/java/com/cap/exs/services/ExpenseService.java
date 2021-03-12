@@ -103,7 +103,7 @@ public class ExpenseService implements IExpenseService {
 			}
 			catch(DataIntegrityViolationException e)
 			{
-				String errorMessage = String.format("Employee already exist for expensee = %s", expense.toString());
+				String errorMessage = String.format("Expense claim exist for expensee = %s Cannot delete!", expense.toString());
 				logger.error(errorMessage,ExpenseAssociatedException.class);
 				throw new ExpenseAssociatedException(errorMessage);
 			}
