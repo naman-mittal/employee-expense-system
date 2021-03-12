@@ -30,6 +30,10 @@ import com.cap.exs.request.UpdateExpenseClaimRequest;
 import com.cap.exs.services.ExpenseClaimService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Validated
@@ -43,7 +47,15 @@ public class ExpenseClaimController {
 	// Get all the Expense Claims
 	
 	@GetMapping("/expenseClaims")
+	@ApiOperation(value = "Get all Expense Claims", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "No expense claims found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		return expenseClaimService.getAllExpenseClaim();
 	}
@@ -51,8 +63,16 @@ public class ExpenseClaimController {
 	// Add Expense Claim
 	
 	@PostMapping("/expenseClaim")
+	@ApiOperation(value = "Add expense claim", response = ExpenseClaim.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully added expense claim"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+	})
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ExpenseClaim addExpenseClaim(@Valid @RequestBody AddExpenseClaimRequest request) {
+	public ExpenseClaim addExpenseClaim(@ApiParam(name="ExpenseClaim Request", required = true) @Valid @RequestBody AddExpenseClaimRequest request) {
 		
 		ExpenseClaim claim = new ExpenseClaim();
 		
@@ -78,6 +98,14 @@ public class ExpenseClaimController {
 	// Find an Expense Claim by its id
 	
 	@GetMapping("/expenseClaim/{id}")
+	@ApiOperation(value = "Retrieve expense claim using its Id", response = ExpenseClaim.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved Expense claim details"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	@ResponseStatus(code = HttpStatus.OK)
 	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId){
 		return expenseClaimService.fetchExpenseClaimById(expenseClaimId);
@@ -86,8 +114,16 @@ public class ExpenseClaimController {
 	// Update Expense Claim
 	
 	@PutMapping("/expenseClaim")
+	@ApiOperation(value = "Upadate the expense claim", response = ExpenseClaim.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Successfully updated"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "Expense Claim not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public ExpenseClaim updateExpenseClaim(@Valid @RequestBody UpdateExpenseClaimRequest request) {
+	public ExpenseClaim updateExpenseClaim(@ApiParam(name="Update ExpenseClaim Request", required = true)@Valid @RequestBody UpdateExpenseClaimRequest request) {
 		
 		ExpenseClaim expenseClaim = new ExpenseClaim();
 		expenseClaim.setExpenseCodeId(request.getId());
@@ -101,6 +137,14 @@ public class ExpenseClaimController {
 	// Delete an Expense Claim by its id
 	
 	@DeleteMapping("/expenseClaim/{id}")
+	@ApiOperation(value = "Delete expense claim", response = ExpenseClaim.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Successfully deleted"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "Expense claim not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public ExpenseClaim deleteExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId) {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
@@ -109,6 +153,14 @@ public class ExpenseClaimController {
 	// Get Expense Claim by Employee's id
 	
 	@GetMapping("/expenseClaims/employee")
+	@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "No expense claims found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<ExpenseClaim> getAllClaimsByEmployee(Employee employee){
 		return expenseClaimService.getAllClaimsByEmployee(employee);
@@ -117,6 +169,14 @@ public class ExpenseClaimController {
 	// Find all Expense Claims between two dates
 	
 	@GetMapping("/expenseClaims/dates")
+	@ApiOperation(value = "Get all Expense Claims between two dates", response = List.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved all expense claims"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "No expense claims found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<ExpenseClaim> findAllClaimsBetweenDates(@RequestParam("startDate")@DateTimeFormat(pattern="MM/dd/yyyy") LocalDate startDate ,@RequestParam("endDate")@DateTimeFormat(pattern="MM/dd/yyyy") LocalDate endDate){
 		return expenseClaimService.findAllClaimsBetweenDates(startDate, endDate);
