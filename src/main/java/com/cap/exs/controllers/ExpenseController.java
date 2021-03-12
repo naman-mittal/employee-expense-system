@@ -7,6 +7,7 @@ import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class ExpenseController {
 	@Autowired
 	private ExpenseService expenseService;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/expense/expenseCode")
 	@ApiOperation(value = "Get all Expense Code", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
@@ -53,6 +55,7 @@ public class ExpenseController {
 		return expenseService.getAllExpenseCode();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/expense")
 	@ApiOperation(value = "Add expense", response = Expense.class)
 	@ApiResponses(value = {
@@ -71,6 +74,7 @@ public class ExpenseController {
 		return expenseService.addExpense(expense);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER') or hasRole('MANAGER')")
 	@GetMapping("/expenses")
 	@ApiOperation(value = "Get all Expenses", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
@@ -86,6 +90,7 @@ public class ExpenseController {
 		return expenseService.getAllExpenses();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/expense/{id}")
 	@ApiOperation(value = "Retrieve expense using its Id", response = Expense.class)
 	@ApiResponses(value = {
@@ -101,6 +106,7 @@ public class ExpenseController {
 		return expenseService.getExpenseByCode(expId);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/expense")
 	@ApiOperation(value = "Upadate the expense", response = Expense.class)
 	@ApiResponses(value = {
@@ -120,6 +126,7 @@ public class ExpenseController {
 		return expenseService.updateExpense(expense);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/expense/{id}")
 	@ApiOperation(value = "Delete expense", response = Expense.class)
 	@ApiResponses(value = {
@@ -135,6 +142,7 @@ public class ExpenseController {
 		return expenseService.deleteExpenseByCode(expCode);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/expenses")
 	@ApiOperation(value = "Delete all expenses")
 	@ApiResponses(value = {

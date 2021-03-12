@@ -7,6 +7,7 @@ import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,7 @@ public class ProjectController {
 	@Autowired
 	ProjectService projectService;
 	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER') or hasRole('MANAGER')")
 	@ApiOperation(value = "Retrieve all projects", response = List.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved projects"),
@@ -52,6 +54,7 @@ public class ProjectController {
 		return projectService.getAllProject();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "Add a new Project", response = Project.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successfully created project"),
@@ -72,6 +75,7 @@ public class ProjectController {
 		return projectService.addProject(project);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "Update the Project", response = Project.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 204, message = "Successfully updated project"),
@@ -94,6 +98,7 @@ public class ProjectController {
 		return projectService.updateProject(project);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "Delete the Project", response = Project.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 204, message = "Successfully deleted project"),
@@ -108,6 +113,7 @@ public class ProjectController {
 		return projectService.deleteProjectById(id);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "Delete all Projects", response = Project.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 204, message = "Successfully deleted projects"),
@@ -122,6 +128,7 @@ public class ProjectController {
 		projectService.deleteAllProject();
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/projects/projectCode")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(value = "Get the Projects code", response = List.class)
@@ -136,7 +143,7 @@ public class ProjectController {
 		return projectService.getAllProjectCodes();		
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/project/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(value = "Find the Project by its code", response = List.class)

@@ -1,6 +1,19 @@
 package com.cap.exs.entities;
 
-import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
@@ -19,13 +32,18 @@ public class LoginDetails {
 	private String userName;		//employee username
 	
 	@NotNull
-	@Size(min = 8,max = 20)
 	private String password;		//employee password
 	
 	@NotNull
 	@Size(min = 4,max = 20)
 	private String role;			//employee role
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
+	
 	//default constructor
 	public LoginDetails() {
 }
@@ -68,6 +86,16 @@ public class LoginDetails {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

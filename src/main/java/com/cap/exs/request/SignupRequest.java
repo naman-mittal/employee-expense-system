@@ -1,5 +1,7 @@
 package com.cap.exs.request;
 
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -56,7 +58,17 @@ public class SignupRequest {
 	@NotNull
 	@Size(min = 4,max = 20)
 	private String role;
+
+	 private Set<String> roles;
 	
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
+	}
+
 	public SignupRequest() {
 		super();
 	}

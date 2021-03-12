@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,7 @@ public class ExpenseClaimController {
 	ExpenseClaimService expenseClaimService;
 	
 	// Get all the Expense Claims
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaims")
 	@ApiOperation(value = "Get all Expense Claims", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
@@ -62,6 +63,7 @@ public class ExpenseClaimController {
 	
 	// Add Expense Claim
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/expenseClaim")
 	@ApiOperation(value = "Add expense claim", response = ExpenseClaim.class)
 	@ApiResponses(value = {
@@ -96,7 +98,7 @@ public class ExpenseClaimController {
 	}
 	
 	// Find an Expense Claim by its id
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaim/{id}")
 	@ApiOperation(value = "Retrieve expense claim using its Id", response = ExpenseClaim.class)
 	@ApiResponses(value = {
@@ -112,7 +114,7 @@ public class ExpenseClaimController {
 	}
 	
 	// Update Expense Claim
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@PutMapping("/expenseClaim")
 	@ApiOperation(value = "Upadate the expense claim", response = ExpenseClaim.class)
 	@ApiResponses(value = {
@@ -135,7 +137,7 @@ public class ExpenseClaimController {
 	}
 	
 	// Delete an Expense Claim by its id
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/expenseClaim/{id}")
 	@ApiOperation(value = "Delete expense claim", response = ExpenseClaim.class)
 	@ApiResponses(value = {
@@ -151,7 +153,7 @@ public class ExpenseClaimController {
 	}
 	
 	// Get Expense Claim by Employee's id
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('USER')")
 	@GetMapping("/expenseClaims/employee")
 	@ApiOperation(value = "Get all Expense Claims by Employee", response = List.class)
 	@ApiResponses(value = {
@@ -167,7 +169,7 @@ public class ExpenseClaimController {
 	}
 	
 	// Find all Expense Claims between two dates
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
 	@GetMapping("/expenseClaims/dates")
 	@ApiOperation(value = "Get all Expense Claims between two dates", response = List.class)
 	@ApiResponses(value = {

@@ -1,12 +1,17 @@
 package com.cap.exs.controllers;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +24,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cap.exs.entities.ERole;
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.entities.Role;
+import com.cap.exs.repos.IRoleRepository;
 import com.cap.exs.request.SignupRequest;
 import com.cap.exs.request.UpdateEmployeeRequest;
+import com.cap.exs.response.MessageResponse;
 import com.cap.exs.services.EmployeeService;
 
 import io.swagger.annotations.Api;
@@ -40,6 +49,12 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	@Autowired
+	IRoleRepository roleRepository;
+	
+	@Autowired
+	PasswordEncoder encoder;
+	
 	// Add a new Employee
 	
 	@PostMapping("/signup")
@@ -52,7 +67,7 @@ public class EmployeeController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
-	public Employee addEmployee(@ApiParam(name="Signup Request", required = true) @Valid @RequestBody SignupRequest request) {
+	public ResponseEntity<?> addEmployee(@ApiParam(name="Signup Request", required = true) @Valid @RequestBody SignupRequest request) {
 		
 		Employee employee = new Employee();
 		LoginDetails loginDetails = new LoginDetails();
@@ -67,16 +82,50 @@ public class EmployeeController {
 		employee.setEmpEmailId(request.getEmail());
 		
 		loginDetails.setUserName(request.getUsername());
-		loginDetails.setPassword(request.getPassword());
+		loginDetails.setPassword(encoder.encode(request.getPassword()));
 		loginDetails.setRole(request.getRole());
+		
+		Set<String> strRoles = request.getRoles();
+		Set<Role> roles = new HashSet<>();
+
+		if (strRoles == null) {
+			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+			roles.add(userRole);
+		} else {
+			strRoles.forEach(role -> {
+				switch (role) {
+				case "admin":
+					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(adminRole);
+
+					break;
+				case "manager":
+					Role modRole = roleRepository.findByName(ERole.ROLE_MANAGER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(modRole);
+
+					break;
+				default:
+					Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(userRole);
+				}
+			});
+		}
+
+		loginDetails.setRoles(roles);
 		
 		employee.setLoginDetails(loginDetails);
 		
-		return employeeService.addEmployee(employee);
+		employeeService.addEmployee(employee);
+		
+		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
 	
 	// Get all the employees
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employees")
 	@ApiOperation(value = "Get all Employees", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
@@ -94,6 +143,7 @@ public class EmployeeController {
 	
 	// Find an employee by its id
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(value = "Retrieve an employee using its Id", response = Employee.class)
@@ -111,6 +161,7 @@ public class EmployeeController {
 	
 	// delete an employee by its id
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Delete an employee by its Id")
@@ -127,7 +178,7 @@ public class EmployeeController {
 	}
 	
 	// update employee's designation,domain and PAN
-	
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Update the employee", response = Employee.class)
@@ -151,7 +202,7 @@ public class EmployeeController {
 	}
 	
 	// Get employee by its username, password and role
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/employee")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ApiOperation(value = "Retrieve an employee using its username, password and role", response = Employee.class)
