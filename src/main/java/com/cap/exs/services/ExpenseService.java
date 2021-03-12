@@ -84,7 +84,7 @@ public class ExpenseService implements IExpenseService {
 			
 			Expense foundExpense = expenseRepository.findByExpenseType(expense.getExpenseType());
 			
-			if(foundExpense!=null)
+			if(foundExpense!=null && foundExpense.getExpenseCode()!=expense.getExpenseCode())
 			{
 				String errorMessage = String.format("expense type : %s already exists... Cannot update!", expense.getExpenseType());
 				logger.error(errorMessage, ExpenseAlreadyExistException.class);
