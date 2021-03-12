@@ -40,11 +40,15 @@ public class ExpenseClaimController {
 	@Autowired
 	ExpenseClaimService expenseClaimService;
 	
+	// Get all the Expense Claims
+	
 	@GetMapping("/expenseClaims")
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<ExpenseClaim> getAllExpenseClaim(){
 		return expenseClaimService.getAllExpenseClaim();
 	}
+	
+	// Add Expense Claim
 	
 	@PostMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -71,11 +75,15 @@ public class ExpenseClaimController {
 		return expenseClaimService.addExpenseClaim(claim);
 	}
 	
+	// Find an Expense Claim by its id
+	
 	@GetMapping("/expenseClaim/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public ExpenseClaim fetchExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId){
 		return expenseClaimService.fetchExpenseClaimById(expenseClaimId);
 	}
+	
+	// Update Expense Claim
 	
 	@PutMapping("/expenseClaim")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -90,17 +98,23 @@ public class ExpenseClaimController {
 		return expenseClaimService.updateExpenseClaim(expenseClaim);
 	}
 	
+	// Delete an Expense Claim by its id
+	
 	@DeleteMapping("/expenseClaim/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public ExpenseClaim deleteExpenseClaimById(@PathVariable("id") @Min(1) int expenseClaimId) {
 		return expenseClaimService.deleteExpenseClaimById(expenseClaimId);
 	}
 	
+	// Get Expense Claim by Employee's id
+	
 	@GetMapping("/expenseClaims/employee")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<ExpenseClaim> getAllClaimsByEmployee(Employee emp){
-		return expenseClaimService.getAllClaimsByEmployee(emp);
+	public List<ExpenseClaim> getAllClaimsByEmployee(Employee employee){
+		return expenseClaimService.getAllClaimsByEmployee(employee);
 	}
+	
+	// Find all Expense Claims between two dates
 	
 	@GetMapping("/expenseClaims/dates")
 	@ResponseStatus(code = HttpStatus.OK)
