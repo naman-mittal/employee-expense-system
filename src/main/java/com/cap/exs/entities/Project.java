@@ -36,15 +36,19 @@ public class Project {
 	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate endDate;
 	
+	//Class constructor
 	public Project() {}
 	
-	public Project( String projectDescription, LocalDate startDate, LocalDate endDate) {
+	
+	//Constructor using fields
+	public Project(String projectDescription, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.projectDescription = projectDescription;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
-
+	
+	/* Getters Setters*/
 	public int getProjectCode() {
 		return projectCode;
 	}
