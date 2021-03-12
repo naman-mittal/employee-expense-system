@@ -3,6 +3,7 @@ package com.cap.exs.controllers;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,7 +60,7 @@ public class ExpenseController {
 	
 	@GetMapping("/expense/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Expense getExpenseByCode(@PathVariable("id") int expId)
+	public Expense getExpenseByCode(@PathVariable("id") @Positive int expId)
 	{
 		return expenseService.getExpenseByCode(expId);
 	}
@@ -77,7 +78,7 @@ public class ExpenseController {
 	
 	@DeleteMapping("/expense/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public Expense deleteExpenseByCode(@PathVariable("id") int expCode)
+	public Expense deleteExpenseByCode(@PathVariable("id") @Positive int expCode)
 	{
 		return expenseService.deleteExpenseByCode(expCode);
 	}

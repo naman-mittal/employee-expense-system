@@ -1,12 +1,14 @@
 package com.cap.exs.request;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class AddExpenseRequest {
 	
 	
 	@NotNull
+	@Pattern(regexp = "[a-zA-Z]*",message = "Invalid")
 	@Size(min = 5,max = 30)
 	private String expenseType;
 	
@@ -19,8 +21,7 @@ public class AddExpenseRequest {
 		
 	}
 
-	public AddExpenseRequest(@NotNull @Size(min = 5, max = 30) String expenseType,
-			@NotNull @Size(min = 5, max = 50) String expenseDescription) {
+	public AddExpenseRequest(String expenseType,String expenseDescription) {
 		super();
 		this.expenseType = expenseType;
 		this.expenseDescription = expenseDescription;

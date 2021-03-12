@@ -16,6 +16,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
+import com.cap.exs.exceptions.ExpenseAlreadyExistException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.ExpenseClaimNotFoundException;
 import com.cap.exs.exceptions.ExpenseNotFoundException;
@@ -62,6 +63,11 @@ public class ExceptionHandlingController {
 	
 	@ExceptionHandler(EmailAlreadyRegisteredException.class)
 	  ResponseEntity<String> handleEmailAlreadyRegisteredException(EmailAlreadyRegisteredException e) {
+	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+	  }
+	
+	@ExceptionHandler(ExpenseAlreadyExistException.class)
+	  ResponseEntity<String> handleExpenseAlreadyExistException(ExpenseAlreadyExistException e) {
 	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
 	  }
 	

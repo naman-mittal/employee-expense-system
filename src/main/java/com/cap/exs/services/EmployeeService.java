@@ -16,7 +16,6 @@ import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
-import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
 import com.cap.exs.service_interfaces.IEmployeeService;
