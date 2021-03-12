@@ -24,7 +24,7 @@ public class ProjectService implements IProjectService{
 	
 	Logger logger = LoggerFactory.getLogger(ProjectService.class);
 	
-	//change this....DONE
+	// Get all projects at once
 	public List<Project> getAllProject(){
 		List<Project> projects = projectRepository.findAll();
 		
@@ -38,13 +38,14 @@ public class ProjectService implements IProjectService{
 	}
 	
 	
+	// Add project
 	public Project addProject(Project project) {
 		
 		return projectRepository.save(project);
 	}
 	
 
-	
+	// Update project by ID
 	public Project updateProject(Project project) {
 		
 		this.findByCode(project.getProjectCode());
@@ -52,7 +53,7 @@ public class ProjectService implements IProjectService{
 		return projectRepository.save(project);
 	}
 	
-	//change this....
+	// Delete project by ID
 	public Project deleteProjectById(int id) {
 
 		Project project = this.findByCode(id);
@@ -67,10 +68,12 @@ public class ProjectService implements IProjectService{
 		return project;
 	}
 	
+	// Extra method added to delete all projects at once
+	public void deleteAllProject(){
+		projectRepository.deleteAll();
+	}
 	
-//	public void deleteAllProject(){}
-	
-	
+	// Get all project codes at once
 	public List<Integer> getAllProjectCodes(){
 		List<Integer> projectCodes = projectRepository.getAllProjectCodes();
 		
@@ -83,7 +86,7 @@ public class ProjectService implements IProjectService{
 		return projectCodes;
 	}
 	
-	
+	// Find project by code(ID)
 	public Project findByCode(int projectCode) {
 		Optional<Project> project = projectRepository.findById(projectCode);
 		if(!project.isPresent())

@@ -37,14 +37,14 @@ public class ProjectController {
 	
 	@GetMapping("/projects")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Project> getAllProject(){
+	public List<Project> getAllProject(){		//We will get all the projects available
 		return projectService.getAllProject();
 	}
 	
 	
 	@PostMapping("/project")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Project addProject(@Valid @RequestBody AddProjectRequest request) {
+	public Project addProject(@Valid @RequestBody AddProjectRequest request) {		//Add projects
 		
 		Project project = new Project();
 		project.setProjectDescription(request.getDescription());
@@ -56,7 +56,7 @@ public class ProjectController {
 	
 	@PutMapping("/project")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public Project updateProject(@Valid @RequestBody UpdateProjectRequest request) {
+	public Project updateProject(@Valid @RequestBody UpdateProjectRequest request) {	//Update projects
 		
 		Project project = new Project();
 		
@@ -71,20 +71,26 @@ public class ProjectController {
 	
 	@DeleteMapping("/project/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public Project deleteProjectById(@PathVariable("id")@Positive int id) {
+	public Project deleteProjectById(@PathVariable("id")@Positive int id) {		//Delete projects by particular ID
 		return projectService.deleteProjectById(id);
+	}
+	
+	@DeleteMapping("/projects")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteAllProject(){					//Extra method added to delete all projects at once
+		projectService.deleteAllProject();
 	}
 	
 	@GetMapping("/projects/projectCode")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Integer> getAllProjectCodes(){
+	public List<Integer> getAllProjectCodes(){		//We will get all project codes(ID)
 		return projectService.getAllProjectCodes();		
 	}
 	
 	
 	@GetMapping("/project/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Project findByCode(@PathVariable("id")@Positive int projectCode) {
+	public Project findByCode(@PathVariable("id")@Positive int projectCode) {	//We will get the project by ID
 		return projectService.findByCode(projectCode);	
 	}
 }

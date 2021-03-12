@@ -64,6 +64,4 @@ public class UpdateProjectRequest {
 		this.endDate = endDate;
 	}
 	
-	
-	
 }
