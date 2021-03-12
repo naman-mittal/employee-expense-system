@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.cap.exs.entities.Employee;
 import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
@@ -33,16 +34,21 @@ public class EmployeeService implements IEmployeeService {
 	
 	Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 	
+	@Transactional
 	public Employee addEmployee(Employee employee) {
 		
-		LoginDetails loginDetails = loginRepository.findByUserName(employee.getLoginDetails().getUserName());
+		Employee foundEmployee = employeeRepository.findByEmpEmailId(employee.getEmpEmailId());
 		
-		if(loginDetails!=null)
+		if(foundEmployee!=null)
 		{
-			String errorMessage = String.format("username %s already taken!!", loginDetails.getUserName());
-			logger.error(errorMessage, UsernameAlreadyExistException.class);
-			throw new UsernameAlreadyExistException(errorMessage);
+			String errorMessage = String.format("email %s already registered!!", employee.getEmpEmailId());
+			logger.error(errorMessage, EmailAlreadyRegisteredException.class);
+			throw new EmailAlreadyRegisteredException(errorMessage);
 		}
+		
+		LoginDetails loginDetails = loginService.addDetails(employee.getLoginDetails());
+		
+		employee.setLoginDetails(loginDetails);
 		
 		return employeeRepository.save(employee);
 	}
@@ -84,6 +90,7 @@ public class EmployeeService implements IEmployeeService {
 		try
 		{
 		employeeRepository.delete(employee);
+		loginService.deleteDetailsById(employee.getLoginDetails().getId());
 		}
 		catch(DataIntegrityViolationException e)
 		{

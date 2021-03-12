@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -14,6 +16,9 @@ import javax.validation.constraints.Size;
 import com.cap.exs.validators.Past;
 
 @Entity
+@Table(uniqueConstraints = { 
+	@UniqueConstraint(columnNames = "empEmailId") 
+})
 public class Employee {
 
 	@Id
@@ -59,7 +64,7 @@ public class Employee {
 	private String empEmailId;
 	
 	@NotNull(message = "LoginDetails cannot be null")
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.PERSIST,orphanRemoval = true)
 	private LoginDetails loginDetails;
 
 	

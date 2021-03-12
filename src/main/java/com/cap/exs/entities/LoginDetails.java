@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
+@Table(uniqueConstraints = { 
+		@UniqueConstraint(columnNames = "userName") 
+	})
 public class LoginDetails {
 	
 	@Id

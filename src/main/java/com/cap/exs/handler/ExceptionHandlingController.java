@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
@@ -58,6 +59,12 @@ public class ExceptionHandlingController {
 	  ResponseEntity<String> handleUsernameAlreadyExistException(UsernameAlreadyExistException e) {
 	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
 	  }
+	
+	@ExceptionHandler(EmailAlreadyRegisteredException.class)
+	  ResponseEntity<String> handleEmailAlreadyRegisteredException(EmailAlreadyRegisteredException e) {
+	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+	  }
+	
 	@ExceptionHandler(ProjectNotFoundException.class)
 	ResponseEntity<String> handleProjectNotFoundException(ProjectNotFoundException e)
 	{

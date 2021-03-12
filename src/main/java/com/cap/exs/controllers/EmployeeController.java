@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.exs.entities.Employee;
+import com.cap.exs.entities.LoginDetails;
+import com.cap.exs.request.SignupRequest;
 import com.cap.exs.request.UpdateEmployeeRequest;
 import com.cap.exs.services.EmployeeService;
 
@@ -36,9 +38,27 @@ public class EmployeeController {
 	
 	// Add a new Employee
 	
-	@PostMapping("/employee")
+	@PostMapping("/signup")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Employee addEmployee(@Valid @RequestBody Employee employee) {
+	public Employee addEmployee(@Valid @RequestBody SignupRequest request) {
+		
+		Employee employee = new Employee();
+		LoginDetails loginDetails = new LoginDetails();
+		
+		employee.setEmpName(request.getName());
+		employee.setEmpPAN(request.getPan());
+		employee.setEmpDesignation(request.getDesignation());
+		employee.setEmpDomain(request.getDomain());
+		employee.setEmpDOB(request.getDob());
+		employee.setEmpDOJ(request.getDoj());
+		employee.setEmpSalary(request.getSalary());
+		employee.setEmpEmailId(request.getEmail());
+		
+		loginDetails.setUserName(request.getUsername());
+		loginDetails.setPassword(request.getPassword());
+		loginDetails.setRole(request.getRole());
+		
+		employee.setLoginDetails(loginDetails);
 		
 		return employeeService.addEmployee(employee);
 	}
