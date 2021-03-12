@@ -3,7 +3,7 @@ package com.cap.exs.controllers;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +27,9 @@ import com.cap.exs.services.EmployeeService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @Validated
@@ -42,7 +45,14 @@ public class EmployeeController {
 	@PostMapping("/signup")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@ApiOperation(value = "Signup", response = Employee.class)
-	public Employee addEmployee(@Valid @RequestBody SignupRequest request) {
+	@ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully signed up"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
+	public Employee addEmployee(@ApiParam(name="Signup Request", required = true) @Valid @RequestBody SignupRequest request) {
 		
 		Employee employee = new Employee();
 		LoginDetails loginDetails = new LoginDetails();
@@ -68,7 +78,15 @@ public class EmployeeController {
 	// Get all the employees
 	
 	@GetMapping("/employees")
+	@ApiOperation(value = "Get all Employees", response = List.class)
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved all employees"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "No employees found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
 	public List<Employee> getEmployees(){
 		
 		return employeeService.getEmployees();
@@ -78,7 +96,15 @@ public class EmployeeController {
 	
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Employee findByEmployeeCode(@PathVariable("id") @Min(1) int empId) {
+	@ApiOperation(value = "Retrieve an employee using its Id", response = Employee.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved Employee details"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
+	public Employee findByEmployeeCode(@PathVariable("id") @Positive int empId) {
 		
 		return employeeService.findByEmployeeCode(empId);		
 	}
@@ -87,7 +113,15 @@ public class EmployeeController {
 	
 	@DeleteMapping("/employee/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteEmpById(@PathVariable("id") @Min(1) int empId) {
+	@ApiOperation(value = "Delete an employee by its Id")
+	@ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Successfully deleted"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
+	public void deleteEmpById(@PathVariable("id") @Positive int empId) {
 		
 		employeeService.deleteEmpById(empId);
 	}
@@ -96,7 +130,15 @@ public class EmployeeController {
 	
 	@PutMapping("/employee")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public Employee updateEmployee(@Valid @RequestBody UpdateEmployeeRequest request) {
+	@ApiOperation(value = "Update the employee", response = Employee.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Successfully updated"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
+	public Employee updateEmployee(@ApiParam(name="Update Employee Request", required = true)@Valid @RequestBody UpdateEmployeeRequest request) {
 		
 		Employee employee = new Employee();
 		
@@ -112,7 +154,15 @@ public class EmployeeController {
 	
 	@GetMapping("/employee")
 	@ResponseStatus(code = HttpStatus.OK)
-	public Employee getDetailsByAll(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password, @RequestParam(name = "role") String role) {
+	@ApiOperation(value = "Retrieve an employee using its username, password and role", response = Employee.class)
+	@ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved employee"),
+            @ApiResponse(code = 400, message = "Check your input parameters"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 500, message = "Application failed to process the request")
+    })
+	public Employee getDetailsByAll(@ApiParam(name="Employee's username", required = true)@RequestParam(name = "userName") String username,@ApiParam(name="Employee's password", required = true) @RequestParam(name = "password") String password,@ApiParam(name="Employee's role", required = true) @RequestParam(name = "role") String role) {
 		
 		return employeeService.getDetailsByAll(username, password, role);
 	}
