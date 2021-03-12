@@ -101,7 +101,7 @@ public class EmployeeController {
             @ApiResponse(code = 200, message = "Successfully retrieved Employee details"),
             @ApiResponse(code = 400, message = "Check your input parameters"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 404, message = "No employee found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	public Employee findByEmployeeCode(@PathVariable("id") @Positive int empId) {
@@ -118,7 +118,7 @@ public class EmployeeController {
             @ApiResponse(code = 204, message = "Successfully deleted"),
             @ApiResponse(code = 400, message = "Check your input parameters"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 404, message = "No employee found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	public void deleteEmpById(@PathVariable("id") @Positive int empId) {
@@ -135,7 +135,7 @@ public class EmployeeController {
             @ApiResponse(code = 204, message = "Successfully updated"),
             @ApiResponse(code = 400, message = "Check your input parameters"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 404, message = "No employee found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	public Employee updateEmployee(@ApiParam(name="Update Employee Request", required = true)@Valid @RequestBody UpdateEmployeeRequest request) {
@@ -159,7 +159,7 @@ public class EmployeeController {
             @ApiResponse(code = 200, message = "Successfully retrieved employee"),
             @ApiResponse(code = 400, message = "Check your input parameters"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 404, message = "No employee found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	public Employee getDetailsByAll(@ApiParam(name="Employee's username", required = true)@RequestParam(name = "userName") String username,@ApiParam(name="Employee's password", required = true) @RequestParam(name = "password") String password,@ApiParam(name="Employee's role", required = true) @RequestParam(name = "role") String role) {
