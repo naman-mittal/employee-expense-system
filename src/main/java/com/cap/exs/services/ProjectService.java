@@ -9,14 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.Project;
+import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
+import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.repos.IProjectRepository;
 import com.cap.exs.service_interfaces.IProjectService;
-import com.cap.exs.exceptions.EmployeeAssociatedException;
-import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
-import com.cap.exs.exceptions.ProjectAlreadyExistException;
-import com.cap.exs.exceptions.ProjectNotFoundException;
 
 
 @Service 

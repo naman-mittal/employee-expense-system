@@ -26,6 +26,7 @@ import com.cap.exs.request.UpdateEmployeeRequest;
 import com.cap.exs.services.EmployeeService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Validated
@@ -40,6 +41,7 @@ public class EmployeeController {
 	
 	@PostMapping("/signup")
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@ApiOperation(value = "Signup", response = Employee.class)
 	public Employee addEmployee(@Valid @RequestBody SignupRequest request) {
 		
 		Employee employee = new Employee();

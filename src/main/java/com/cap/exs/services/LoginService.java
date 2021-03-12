@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.cap.exs.controllers.LoggingController;
 import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmployeeAssociatedException;
-import com.cap.exs.exceptions.EmployeeNotFoundException;
-import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
 import com.cap.exs.exceptions.InvalidUserException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 import com.cap.exs.repos.IEmployeeRepository;
