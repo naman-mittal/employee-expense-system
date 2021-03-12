@@ -16,6 +16,7 @@ import com.cap.exs.entities.LoginDetails;
 import com.cap.exs.exceptions.EmailAlreadyRegisteredException;
 import com.cap.exs.exceptions.EmployeeNotFoundException;
 import com.cap.exs.exceptions.ExpenseClaimAssociatedException;
+import com.cap.exs.exceptions.PANAlreadyRegisteredException;
 import com.cap.exs.repos.IEmployeeRepository;
 import com.cap.exs.repos.ILoginRepository;
 import com.cap.exs.service_interfaces.IEmployeeService;
@@ -44,6 +45,20 @@ public class EmployeeService implements IEmployeeService {
 			logger.error(errorMessage, EmailAlreadyRegisteredException.class);
 			throw new EmailAlreadyRegisteredException(errorMessage);
 		}
+		
+		if(employee.getEmpPAN()!=null)
+		{
+			
+			foundEmployee = employeeRepository.findByEmpPAN(employee.getEmpPAN());
+			if(foundEmployee!=null)
+			{
+				String errorMessage = String.format("PAN %s already registered!!", employee.getEmpPAN());
+				logger.error(errorMessage, PANAlreadyRegisteredException.class);
+				throw new PANAlreadyRegisteredException(errorMessage);
+			}
+			
+		}
+		
 		
 		LoginDetails loginDetails = loginService.addDetails(employee.getLoginDetails());
 		
@@ -104,7 +119,17 @@ public class EmployeeService implements IEmployeeService {
 	public Employee updateEmployee(Employee employee) {
 		
 		
+		
 		Employee foundEmployee = this.findByEmployeeCode(employee.getEmpId());
+		
+		Employee found = employeeRepository.findByEmpPAN(employee.getEmpPAN());
+		
+		if(found!=null && found.getEmpId()!=employee.getEmpId())
+		{
+			String errorMessage = String.format("pan : %s already registered... Cannot update!", employee.getEmpPAN());
+			logger.error(errorMessage, PANAlreadyRegisteredException.class);
+			throw new PANAlreadyRegisteredException(errorMessage);
+		}
 		
 		foundEmployee.setEmpDesignation(employee.getEmpDesignation());
 		foundEmployee.setEmpDomain(employee.getEmpDomain());

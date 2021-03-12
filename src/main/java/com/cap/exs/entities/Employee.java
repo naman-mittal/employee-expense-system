@@ -17,7 +17,8 @@ import com.cap.exs.validators.Past;
 
 @Entity
 @Table(uniqueConstraints = { 
-	@UniqueConstraint(columnNames = "empEmailId") 
+	@UniqueConstraint(columnNames = "empEmailId"), 
+	@UniqueConstraint(columnNames = "empPAN") 
 })
 public class Employee {
 

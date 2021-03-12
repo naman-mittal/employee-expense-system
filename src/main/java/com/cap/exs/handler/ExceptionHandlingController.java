@@ -23,6 +23,7 @@ import com.cap.exs.exceptions.ExpenseNotFoundException;
 import com.cap.exs.exceptions.InvalidEndDateException;
 import com.cap.exs.exceptions.InvalidUserException;
 import com.cap.exs.exceptions.NoIdProvidedException;
+import com.cap.exs.exceptions.PANAlreadyRegisteredException;
 import com.cap.exs.exceptions.ProjectNotFoundException;
 import com.cap.exs.exceptions.UsernameAlreadyExistException;
 
@@ -63,6 +64,11 @@ public class ExceptionHandlingController {
 	
 	@ExceptionHandler(EmailAlreadyRegisteredException.class)
 	  ResponseEntity<String> handleEmailAlreadyRegisteredException(EmailAlreadyRegisteredException e) {
+	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
+	  }
+	
+	@ExceptionHandler(PANAlreadyRegisteredException.class)
+	  ResponseEntity<String> handlePANAlreadyRegisteredException(PANAlreadyRegisteredException e) {
 	    return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
 	  }
 	

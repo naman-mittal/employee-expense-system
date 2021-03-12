@@ -14,4 +14,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Integer>{
 	
 	public Employee findByEmpEmailId(String email);
 	
+	public Employee findByEmpPAN(String pan);
+	
 }
