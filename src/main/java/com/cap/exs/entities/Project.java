@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.cap.exs.exceptions.InvalidEndDateException;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -81,7 +82,12 @@ public class Project {
 	}
 	
 	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
+		if(endDate.isAfter(startDate)) {
+			this.endDate = endDate;
+			}
+		else {
+			throw new InvalidEndDateException("End date should be the date after start date");
+			}
 	}
 
 	
