@@ -45,7 +45,7 @@ public class Employee {
 	
 	
 	@NotNull(message = "Employee date of joining cannot be null")
-	@Pattern(regexp = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$", message = "Invalid date of joining")
+	@Pattern(regexp = "^(0[1-9]|1[012])/(0[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d$", message = "Invalid date of joining")
 	@Past
 	private String empDOJ;
 	

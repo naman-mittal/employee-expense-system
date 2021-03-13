@@ -21,10 +21,10 @@ import io.jsonwebtoken.UnsupportedJwtException;
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	@Value("${bezkoder.app.jwtSecret}")
+	@Value("${com.cap.jwtSecret}")
 	private String jwtSecret;
 
-	@Value("${bezkoder.app.jwtExpirationMs}")
+	@Value("${com.cap.jwtExpirationMs}")
 	private int jwtExpirationMs;
 
 	public String generateJwtToken(Authentication authentication) {

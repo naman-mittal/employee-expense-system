@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)  
 public @interface Past {  
     //error message  
-        public String message() default "date shoul be in format 'MM/dd/yyyy' and cannot be a future date";  
+        public String message() default "date should be in format 'MM/dd/yyyy' and cannot be a future date";  
     //represents group of constraints     
         public Class<?>[] groups() default {};  
     //represents additional information about annotation  

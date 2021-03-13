@@ -105,7 +105,7 @@ public class ExpenseClaimController {
             @ApiResponse(code = 200, message = "Successfully retrieved Expense claim details"),
             @ApiResponse(code = 400, message = "Check your input parameters"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),
+            @ApiResponse(code = 404, message = "Expense claim not found"),
             @ApiResponse(code = 500, message = "Application failed to process the request")
     })
 	@ResponseStatus(code = HttpStatus.OK)

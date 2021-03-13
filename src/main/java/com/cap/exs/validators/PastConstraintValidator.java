@@ -18,7 +18,7 @@ public class PastConstraintValidator implements ConstraintValidator<Past, String
 			
 			date = LocalDate.parse(value,DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 		}
-		catch(DateTimeParseException e)
+		catch(Exception e)
 		{
 			return false;
 		}
